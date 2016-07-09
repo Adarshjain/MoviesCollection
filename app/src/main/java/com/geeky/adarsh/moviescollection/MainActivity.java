@@ -1,12 +1,17 @@
 package com.geeky.adarsh.moviescollection;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.geeky.adarsh.moviescollection.ThirdParty.SlidingTabLayout;
 
@@ -27,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         mSlidingTabLayout = (SlidingTabLayout) findViewById(R.id.tabs);
     }
 
-    class MyPagerAdapter extends FragmentPagerAdapter{
+    class MyPagerAdapter extends FragmentPagerAdapter {
 
         public MyPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -35,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return null;
+            MyFragment myFragment = MyFragment.getInstance(position);
+            return myFragment;
         }
 
         @Override
@@ -44,5 +50,24 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public static class MyFragment
+    public static class MyFragment extends Fragment {
+        public static MyFragment getInstance(int position) {
+            MyFragment myFragment = new MyFragment();
+            Bundle args = new Bundle();
+            args.putInt("position", position);
+            myFragment.setArguments(args);
+            return myFragment;
+        }
+
+        @Nullable
+        @Override
+        public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+            View layout = inflater.inflate(R.layout.fragment_box_office, container, false);
+            Bundle bundle = getArguments();
+            if (bundle != null) {
+                Toast.makeText(getContext(), bundle.getInt("position") + 1, Toast.LENGTH_SHORT).show();
+            }
+            return layout;
+        }
+    }
 }
