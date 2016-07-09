@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -11,10 +12,29 @@
         android:id="@+id/appBar"
         layout="@layout/app_bar" />
 
-    <com.geeky.adarsh.moviescollection.ThirdParty.SlidingTabLayout
-        android:id="@+id/tabs"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <com.gigamole.navigationtabstrip.NavigationTabStrip
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:nts_active_color="@color/colorAccent"
+            app:nts_animation_duration="200"
+            app:nts_color="@color/colorAccent"
+            app:nts_corners_radius="0dp"
+            app:nts_factor="2.5"
+            app:nts_gravity="bottom"
+            app:nts_inactive_color="#FFF"
+            app:nts_size="14sp"
+            app:nts_titles="@array/tabs"
+            app:nts_type="line"
+            app:nts_typeface="fonts/typeface.otf"
+            app:nts_weight="3dp"
+            android:id="@+id/nts"/>
+
+    </LinearLayout>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"

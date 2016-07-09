@@ -1,19 +1,22 @@
 package com.geeky.adarsh.moviescollection;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ImageSpan;
 
+import com.geeky.adarsh.moviescollection.Fragments.FragmentBoxOffice;
+import com.geeky.adarsh.moviescollection.Fragments.FragmentSearch;
+import com.geeky.adarsh.moviescollection.Fragments.FragmentSomething;
 import com.geeky.adarsh.moviescollection.ThirdParty.SlidingTabLayout;
+import com.gigamole.navigationtabstrip.NavigationTabStrip;
 
 public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
@@ -28,46 +31,83 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.appBar);
         setSupportActionBar(toolbar);
 
-        mViewPager = (ViewPager) findViewById(R.id.viewPager);
-        mSlidingTabLayout = (SlidingTabLayout) findViewById(R.id.tabs);
+        setup();
+
+//        mSlidingTabLayout = (SlidingTabLayout) findViewById(R.id.tabs);
+//        mSlidingTabLayout.setViewPager(mViewPager);
     }
 
-    class MyPagerAdapter extends FragmentPagerAdapter {
+    private void setup() {
 
-        public MyPagerAdapter(FragmentManager fm) {
+        mViewPager = (ViewPager) findViewById(R.id.viewPager);
+        mViewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
+        final NavigationTabStrip navigationTabStrip = (NavigationTabStrip) findViewById(R.id.nts);
+//        navigationTabStrip.setTabIndex(1, true);
+        navigationTabStrip.setViewPager(mViewPager);
+        navigationTabStrip.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+        navigationTabStrip.setOnTabStripSelectedIndexListener(new NavigationTabStrip.OnTabStripSelectedIndexListener() {
+            @Override
+            public void onStartTabSelected(String title, int index) {
+            }
+
+            @Override
+            public void onEndTabSelected(String title, int index) {
+
+            }
+        });
+    }
+
+//    private String getIcon(int i) {
+//        int icons[] = {R.drawable.ic_search_white_24dp, R.drawable.ic_trending_up_white_24dp, R.drawable.ic_info_white_24dp};
+//        Drawable drawable = getDrawable(icons[i]);
+//        ImageSpan mImageSpan = new ImageSpan(drawable);
+//        SpannableString mSpannableString = new SpannableString(" ");
+//        mSpannableString.setSpan(mImageSpan, 0, mSpannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+//        return (String)mSpannableString;
+//    }
+
+    class MyAdapter extends FragmentPagerAdapter {
+
+
+        public MyAdapter(FragmentManager fm) {
             super(fm);
         }
 
         @Override
         public Fragment getItem(int position) {
-            MyFragment myFragment = MyFragment.getInstance(position);
-            return myFragment;
+            Fragment fragment = null;
+            switch (position) {
+                case 0:
+                    fragment = FragmentSearch.newInstance("", "");
+                    break;
+                case 1:
+                    fragment = FragmentBoxOffice.newInstance("", "");
+                    break;
+                case 2:
+                    fragment = FragmentSomething.newInstance("", "");
+                    break;
+            }
+            return fragment;
         }
+
 
         @Override
         public int getCount() {
-            return 0;
-        }
-    }
-
-    public static class MyFragment extends Fragment {
-        public static MyFragment getInstance(int position) {
-            MyFragment myFragment = new MyFragment();
-            Bundle args = new Bundle();
-            args.putInt("position", position);
-            myFragment.setArguments(args);
-            return myFragment;
-        }
-
-        @Nullable
-        @Override
-        public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            View layout = inflater.inflate(R.layout.fragment_box_office, container, false);
-            Bundle bundle = getArguments();
-            if (bundle != null) {
-                Toast.makeText(getContext(), bundle.getInt("position") + 1, Toast.LENGTH_SHORT).show();
-            }
-            return layout;
+            return 3;
         }
     }
 }
