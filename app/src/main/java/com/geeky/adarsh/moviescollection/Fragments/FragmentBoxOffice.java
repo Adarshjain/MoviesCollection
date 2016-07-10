@@ -9,11 +9,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.geeky.adarsh.moviescollection.Adapter.BoxOfficeAdapter;
@@ -48,6 +51,7 @@ public class FragmentBoxOffice extends Fragment implements SwipeRefreshLayout.On
     private BoxOfficeAdapter mBoxOfficeAdapter;
     private RecyclerView mRecyclerView;
     private SwipeRefreshLayout mSwipeRefreshLayout;
+    private TextView xText;
 
 
     public FragmentBoxOffice() {
@@ -107,7 +111,9 @@ public class FragmentBoxOffice extends Fragment implements SwipeRefreshLayout.On
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
+                        if (error instanceof TimeoutError || error instanceof NoConnectionError){
+                            Toast.makeText(getActivity(),"No Internet Connection",Toast.LENGTH_LONG).show();
+                        }
                     }
                 });
         mRequestQueue.add(mJsonObjectRequest);
@@ -154,6 +160,7 @@ public class FragmentBoxOffice extends Fragment implements SwipeRefreshLayout.On
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_box_office, container, false);
+        xText = (TextView) view.findViewById(R.id.volleyErrorText);
         mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeTop10);
         mSwipeRefreshLayout.setOnRefreshListener(this);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.boxOfficeRecycler);
