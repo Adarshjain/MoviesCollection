@@ -3,6 +3,7 @@ package com.geeky.adarsh.moviescollection.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -32,11 +33,12 @@ import java.util.ArrayList;
  * Use the {@link FragmentBoxOffice#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentBoxOffice extends Fragment {
+public class FragmentBoxOffice extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private static final String URL = "https://api.themoviedb.org/3/movie/top_rated?api_key=39f9635028e0a25da413d4e90255bb20";
+    private static final String STATE_SAVE = "state_save";
     private ArrayList<MoviesDB> myMoviesDB = new ArrayList<>();
 
     private String mParam1;
@@ -45,6 +47,7 @@ public class FragmentBoxOffice extends Fragment {
     private RequestQueue mRequestQueue;
     private BoxOfficeAdapter mBoxOfficeAdapter;
     private RecyclerView mRecyclerView;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
 
     public FragmentBoxOffice() {
@@ -78,6 +81,12 @@ public class FragmentBoxOffice extends Fragment {
 
         mVolleySingleton = VolleySingleton.getInstance();
         mRequestQueue = mVolleySingleton.getRequestQueue();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList(STATE_SAVE, myMoviesDB);
     }
 
     private void sendJsonrequest() {
@@ -145,12 +154,25 @@ public class FragmentBoxOffice extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_box_office, container, false);
+        mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeTop10);
+        mSwipeRefreshLayout.setOnRefreshListener(this);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.boxOfficeRecycler);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mBoxOfficeAdapter = new BoxOfficeAdapter(getActivity());
         mRecyclerView.setAdapter(mBoxOfficeAdapter);
-        sendJsonrequest();
+        if (savedInstanceState != null) {
+            myMoviesDB = savedInstanceState.getParcelableArrayList(STATE_SAVE);
+            mBoxOfficeAdapter.setMoviesList(myMoviesDB);
+        } else {
+            sendJsonrequest();
+        }
         return view;
     }
 
+    @Override
+    public void onRefresh() {
+        Toast.makeText(getActivity(),"Refrshed!",Toast.LENGTH_SHORT).show();
+        if (mSwipeRefreshLayout.isRefreshing())
+            mSwipeRefreshLayout.setRefreshing(false);
+    }
 }

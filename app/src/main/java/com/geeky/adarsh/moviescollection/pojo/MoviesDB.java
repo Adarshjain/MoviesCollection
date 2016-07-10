@@ -1,10 +1,10 @@
 package com.geeky.adarsh.moviescollection.pojo;
 
-/**
- * Created by geekyAdarsh on 10-07-2016.
- */
 
-public class MoviesDB {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class MoviesDB implements Parcelable {
     private String Title;
     private String PosterPath;
     private String Overview;
@@ -22,6 +22,28 @@ public class MoviesDB {
         this.Rating = rating;
         this.RatingCount = ratingCount;
     }
+
+    protected MoviesDB(Parcel in) {
+        Title = in.readString();
+        PosterPath = in.readString();
+        Overview = in.readString();
+        ReleaseDate = in.readString();
+        Id = in.readString();
+        RatingCount = in.readString();
+        Rating = Float.parseFloat(in.readString());
+    }
+
+    public static final Creator<MoviesDB> CREATOR = new Creator<MoviesDB>() {
+        @Override
+        public MoviesDB createFromParcel(Parcel in) {
+            return new MoviesDB(in);
+        }
+
+        @Override
+        public MoviesDB[] newArray(int size) {
+            return new MoviesDB[size];
+        }
+    };
 
     public String getTitle() {
         return Title;
@@ -49,5 +71,21 @@ public class MoviesDB {
 
     public String getRatingCount() {
         return RatingCount;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(Title);
+        parcel.writeString(PosterPath);
+        parcel.writeString(Overview);
+        parcel.writeString(ReleaseDate);
+        parcel.writeString(Id);
+        parcel.writeString(RatingCount);
+        parcel.writeString(Rating.toString());
     }
 }

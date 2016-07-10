@@ -33,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
 
         setup();
 
-//        mSlidingTabLayout = (SlidingTabLayout) findViewById(R.id.tabs);
-//        mSlidingTabLayout.setViewPager(mViewPager);
     }
 
     private void setup() {
@@ -42,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
         mViewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
         final NavigationTabStrip navigationTabStrip = (NavigationTabStrip) findViewById(R.id.nts);
-//        navigationTabStrip.setTabIndex(1, true);
         navigationTabStrip.setViewPager(mViewPager);
         navigationTabStrip.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

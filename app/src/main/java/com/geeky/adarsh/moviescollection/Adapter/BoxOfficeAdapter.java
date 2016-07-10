@@ -9,10 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
+import com.geeky.adarsh.moviescollection.AnimationUtils.AnimUtil;
 import com.geeky.adarsh.moviescollection.R;
 import com.geeky.adarsh.moviescollection.Volley.VolleySingleton;
 import com.geeky.adarsh.moviescollection.pojo.MoviesDB;
@@ -48,11 +48,11 @@ public class BoxOfficeAdapter extends RecyclerView.Adapter<BoxOfficeAdapter.View
         holder.movieTitle.setText(currentMovie.getTitle());
         holder.releaseDate.setText(currentMovie.getReleaseDate());
         holder.ratingBar.setRating(currentMovie.getRating());
+        holder.rating2.setText(String.format("%.02f", currentMovie.getRating()) + " (" + currentMovie.getRatingCount() + ")");
         String Url = currentMovie.getPosterPath();
         mImageLoader.get(Url, new ImageLoader.ImageListener() {
             @Override
             public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
-                Log.d("Bitmat","Created");
                 holder.poster.setImageBitmap(response.getBitmap());
             }
 
@@ -61,6 +61,12 @@ public class BoxOfficeAdapter extends RecyclerView.Adapter<BoxOfficeAdapter.View
 
             }
         });
+
+//        if (position>0){
+//            AnimUtil.animate(holder,true);
+//        }else{
+//            AnimUtil.animate(holder,false);
+//        }
     }
 
     @Override
@@ -70,7 +76,7 @@ public class BoxOfficeAdapter extends RecyclerView.Adapter<BoxOfficeAdapter.View
 
     static class ViewHolderBoxOffice extends RecyclerView.ViewHolder {
 
-        TextView movieTitle, releaseDate;
+        TextView movieTitle, releaseDate, rating2;
         RatingBar ratingBar;
         ImageView poster;
 
@@ -78,6 +84,7 @@ public class BoxOfficeAdapter extends RecyclerView.Adapter<BoxOfficeAdapter.View
             super(itemView);
             movieTitle = (TextView) itemView.findViewById(R.id.movieTitle);
             releaseDate = (TextView) itemView.findViewById(R.id.movieReleaseDate);
+            rating2 = (TextView) itemView.findViewById(R.id.rating2);
             ratingBar = (RatingBar) itemView.findViewById(R.id.movieRatingBar);
             poster = (ImageView) itemView.findViewById(R.id.movieImage);
         }
