@@ -3,9 +3,10 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="poster_image">Poster Image</string>
     <string-array name="tabs">
         <item>Search</item>
-        <item>Trending</item>
+        <item>Top rated</item>
         <item>about</item>
     </string-array>
 </resources>
