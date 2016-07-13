@@ -1,6 +1,5 @@
 package com.geeky.adarsh.moviescollection;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,9 +7,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.style.ImageSpan;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.geeky.adarsh.moviescollection.Fragments.FragmentBoxOffice;
 import com.geeky.adarsh.moviescollection.Fragments.FragmentSearch;
@@ -40,6 +38,11 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
         mViewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
         final NavigationTabStrip navigationTabStrip = (NavigationTabStrip) findViewById(R.id.nts);
+        mViewPager.setCurrentItem(1);
+        setWindowColor();
+//        navigationTabStrip.setTabIndex(1,true);
+//        int[] ico = {(int)R.drawable.ic_info_white_24dp,R.drawable.ic_info_white_24dp,R.drawable.ic_info_white_24dp};
+//        navigationTabStrip.setTitles(ico);
         navigationTabStrip.setViewPager(mViewPager);
         navigationTabStrip.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -66,6 +69,13 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void setWindowColor() {
+        Window window = this.getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimaryDark));
     }
 
 //    private String getIcon(int i) {

@@ -137,7 +137,7 @@ public class FragmentBoxOffice extends Fragment implements SwipeRefreshLayout.On
 
                         JSONObject currentMovie = mJsonArray.getJSONObject(i);
                         title = currentMovie.getString(Terms.TITLE);
-                        posterPath = "http://image.tmdb.org/t/p/w500" + currentMovie.getString(Terms.POSTER_PATH);
+                        posterPath = "http://image.tmdb.org/t/p/original" + currentMovie.getString(Terms.POSTER_PATH);
                         overview = currentMovie.getString(Terms.OVERVIEW);
                         releaseDate = currentMovie.getString(Terms.RELEASE_DATE);
                         id = currentMovie.getString(Terms.ID);
@@ -178,7 +178,7 @@ public class FragmentBoxOffice extends Fragment implements SwipeRefreshLayout.On
 
     @Override
     public void onRefresh() {
-        Toast.makeText(getActivity(),"Refrshed!",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Refreshed!", Toast.LENGTH_SHORT).show();
         if (mSwipeRefreshLayout.isRefreshing())
             mSwipeRefreshLayout.setRefreshing(false);
     }

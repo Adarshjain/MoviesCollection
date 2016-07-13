@@ -12,14 +12,16 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/boxOfficeRecycler"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="8dp" />
 
 
     </android.support.v4.widget.SwipeRefreshLayout>
     <TextView
-        android:gravity="center"
+        android:id="@+id/volleyErrorText"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/volleyErrorText"
+        android:gravity="center"
         android:visibility="gone"/>
 </FrameLayout>
