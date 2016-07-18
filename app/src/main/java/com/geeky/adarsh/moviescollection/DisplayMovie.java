@@ -1,11 +1,11 @@
 package com.geeky.adarsh.moviescollection;
 
-import android.content.Intent;
-import android.graphics.Bitmap;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -30,18 +30,23 @@ public class DisplayMovie extends AppCompatActivity {
         supportPostponeEnterTransition();
 
         Toolbar toolbar;
-        Intent i = getIntent();
+//        Intent i = getIntent();
         Bundle b = getIntent().getExtras();
-        Bitmap bitmap = i.getParcelableExtra("BitmapImage");
+//        Bitmap bitmap = i.getParcelableExtra("BitmapImage");
         String x = b.getString("movieTitle");
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
 //        collapsingToolbarLayout.setExpandedTitleColor(ContextCompat.getColor(getApplicationContext(), android.R.color.transparent));
+        collapsingToolbarLayout.setCollapsedTitleTextAppearance(b.getInt("titleBarColor"));
+        collapsingToolbarLayout.setStatusBarScrimColor(b.getInt("titleBarColor"));
+        collapsingToolbarLayout.setContentScrimColor(b.getInt("titleBarColor"));
         collapsingToolbarLayout.setTitle(x);
+        collapsingToolbarLayout.setBackgroundColor(b.getInt("titleBarColor"));
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+//        toolbar.setBackgroundColor(b.getInt("titleBarColor"));
         NetworkImageView ix = (NetworkImageView) findViewById(R.id.moviePoster);
         String img = b.getString("posterPath");
 //        ix.setImageBitmap(bitmap);
@@ -49,6 +54,10 @@ public class DisplayMovie extends AppCompatActivity {
         mCoordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordLay);
         mAppBarLayout = (AppBarLayout) findViewById(R.id.app_bar_layout);
 
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setBackgroundColor(b.getInt("titleBarColor"));
+//        fab.setColorFilter(b.getInt("titleBarColor"));
+        fab.setBackgroundTintList(ColorStateList.valueOf(b.getInt("titleBarColor")));
 //        mAppBarLayout.post(new Runnable() {
 //            @Override
 //            public void run() {

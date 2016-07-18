@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="16dp"
+    android:paddingTop="8dp">
+
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="16dp"
+            android:paddingEnd="16dp"
+            android:paddingStart="16dp"
+            android:paddingTop="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:text="@string/overview"
+                android:textColor="@color/text_secondary_dark"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tagline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="@string/tagline"
+                android:textColor="@color/text_primary_dark"
+                android:textIsSelectable="true"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/overview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/overviewtext"
+                android:textIsSelectable="true"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <!--<View-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="1dp"-->
+    <!--android:layout_marginStart="16dp"-->
+    <!--android:layout_marginEnd="16dp"-->
+    <!--android:background="@android:color/darker_gray"/>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/rating2Detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:paddingBottom="8dp"
+                        android:paddingStart="8dp"
+                        android:text="4.5"
+                        android:textSize="45sp" />
+
+                    <RatingBar
+                        android:id="@+id/ratingBarDetail"
+                        style="@style/Widget.AppCompat.RatingBar.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_toEndOf="@+id/rating2Detail"
+                        android:rating="4.3" />
+
+                    <TextView
+                        android:id="@+id/voteCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ratingBarDetail"
+                        android:layout_marginStart="8dp"
+                        android:layout_toEndOf="@+id/rating2Detail"
+                        android:text="1000" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_alignBottom="@+id/voteCount"
+                        android:layout_below="@+id/ratingBarDetail"
+                        android:layout_toEndOf="@id/voteCount"
+                        android:alpha="0.57"
+                        android:src="@drawable/ic_person_black_24dp" />
+
+
+                </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/rating3Detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="8dp"
+                    android:text="Release Date:"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/rating3Detail"
+                    android:layout_toEndOf="@id/rating3Detail"
+                    android:paddingEnd="8dp"
+                    android:text=" 2014-10-10" />
+
+                <TextView
+                    android:id="@+id/runtime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rating3Detail"
+                    android:layout_marginStart="8dp"
+                    android:paddingTop="8dp"
+                    android:text="Runtime :"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/runtime"
+                    android:layout_toEndOf="@+id/runtime"
+                    android:paddingEnd="8dp"
+                    android:text=" 105 Mins" />
+
+
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="160dp"
+                android:layout_height="250dp"
+                android:layout_marginStart="8dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/sam" />
+
+            <ImageView
+                android:layout_width="160dp"
+                android:layout_height="250dp"
+                android:layout_marginStart="8dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/sam" />
+
+            <ImageView
+                android:layout_width="160dp"
+                android:layout_height="250dp"
+                android:layout_marginStart="8dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/sam" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:paddingBottom="16dp"
+            android:paddingTop="24dp">
+
+            <TextView
+                android:id="@+id/genre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:text="@string/genre"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/genreData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/genre"
+                android:layout_toEndOf="@id/genre"
+                android:paddingStart="8dp"
+                android:text="Drama, Music" />
+
+            <TextView
+                android:id="@+id/budget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/genreData"
+                android:paddingTop="8dp"
+                android:text="@string/budget"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/budgetData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/budget"
+                android:layout_toEndOf="@+id/budget"
+                android:paddingStart="8dp"
+                android:text="$3300000" />
+
+            <TextView
+                android:id="@+id/revenue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/budgetData"
+                android:paddingTop="8dp"
+                android:text="@string/revenue"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/revenueData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/revenue"
+                android:layout_toEndOf="@+id/revenue"
+                android:paddingStart="8dp"
+                android:text="$13993092" />
+
+            <TextView
+                android:id="@+id/prodComp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/revenueData"
+                android:paddingTop="8dp"
+                android:text="@string/production_companies"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/prodCompData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/prodComp"
+                android:text="Bold Films, Blumhouse Productions, Right of Way Films" />
+
+            <TextView
+                android:id="@+id/spoken"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/prodCompData"
+                android:paddingTop="8dp"
+                android:text="@string/spoken_languages"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/spokenData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spoken"
+                android:text="English" />
+
+            <TextView
+                android:id="@+id/adult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spokenData"
+                android:paddingTop="8dp"
+                android:text="@string/adult_content"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/adultData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/adult"
+                android:layout_toEndOf="@+id/adult"
+                android:paddingStart="8dp"
+                android:paddingTop="8dp"
+                android:text="No" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/external_links"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="16dp"
+                android:background="@color/text_tertiary_dark" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:text="IMDB" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:text="Rotten Tomatoes" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:text="Netflix" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:text="Jumaka Joo" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

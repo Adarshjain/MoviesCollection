@@ -4,7 +4,7 @@ package com.geeky.adarsh.moviescollection.Fragments;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -102,7 +102,6 @@ public class FragmentBoxOffice extends Fragment implements SwipeRefreshLayout.On
 
                     @Override
                     public void onResponse(JSONObject response) {
-                        Toast.makeText(getActivity(), "Done", Toast.LENGTH_SHORT).show();
                         myMoviesDB = parseJsonresponse(response);
                         mBoxOfficeAdapter.setMoviesList(myMoviesDB);
                     }
@@ -111,8 +110,8 @@ public class FragmentBoxOffice extends Fragment implements SwipeRefreshLayout.On
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        if (error instanceof TimeoutError || error instanceof NoConnectionError){
-                            Toast.makeText(getActivity(),"No Internet Connection",Toast.LENGTH_LONG).show();
+                        if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                            Toast.makeText(getActivity(), "No Internet Connection", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -164,7 +163,7 @@ public class FragmentBoxOffice extends Fragment implements SwipeRefreshLayout.On
         mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeTop10);
         mSwipeRefreshLayout.setOnRefreshListener(this);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.boxOfficeRecycler);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         mBoxOfficeAdapter = new BoxOfficeAdapter(getActivity());
         mRecyclerView.setAdapter(mBoxOfficeAdapter);
         if (savedInstanceState != null) {

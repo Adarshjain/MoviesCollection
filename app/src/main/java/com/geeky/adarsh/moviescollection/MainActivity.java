@@ -78,14 +78,6 @@ public class MainActivity extends AppCompatActivity {
         window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimaryDark));
     }
 
-//    private String getIcon(int i) {
-//        int icons[] = {R.drawable.ic_search_white_24dp, R.drawable.ic_trending_up_white_24dp, R.drawable.ic_info_white_24dp};
-//        Drawable drawable = getDrawable(icons[i]);
-//        ImageSpan mImageSpan = new ImageSpan(drawable);
-//        SpannableString mSpannableString = new SpannableString(" ");
-//        mSpannableString.setSpan(mImageSpan, 0, mSpannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-//        return (String)mSpannableString;
-//    }
 
     class MyAdapter extends FragmentPagerAdapter {
 
