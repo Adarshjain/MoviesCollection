@@ -1,77 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:card_view="http://schemas.android.com/tools"
     android:id="@+id/grid_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginEnd="4dp"
     android:layout_marginStart="4dp"
     android:layout_marginTop="8dp"
-    app:cardCornerRadius="0dp"
-    card_view:elevation="0dp">
+    app:cardCornerRadius="2dp">
 
     <RelativeLayout
         android:id="@+id/onclickLayout"
         android:layout_width="wrap_content"
-        android:layout_height="280dp"
+        android:layout_height="290dp"
         android:background="@drawable/ripple"
         android:clickable="true">
 
         <com.android.volley.toolbox.NetworkImageView
             android:id="@+id/movieImage"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:scaleType="fitXY"
-            android:src="@drawable/sam" />
-
-        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY" />
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom">
-
-                <LinearLayout
-                    android:id="@+id/palette_frame"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#000"
-                    android:orientation="horizontal" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:id="@+id/movieTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="They Call Me Jeeg Robot"
-                        android:textColor="@color/white"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/movieReleaseDate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="4dp"
-                        android:text="2010-07-08"
-                        android:textColor="@color/white"
-                        android:textSize="12sp" />
-                </LinearLayout>
-            </FrameLayout>
-
+        <!--<FrameLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+        <!---->
+        <!--<FrameLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="bottom">-->
+        <!---->
+        <!--<LinearLayout-->
+        <!--android:id="@+id/palette_frame"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="#000"-->
+        <!--android:orientation="horizontal" />-->
+        <!---->
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical"-->
+        <!--android:padding="16dp">-->
+        <!---->
+        <!--<TextView-->
+        <!--android:id="@+id/movieTitle"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="They Call Me Jeeg Robot"-->
+        <!--android:textColor="@color/white"-->
+        <!--android:textSize="16sp" />-->
+        <!---->
+        <!--<TextView-->
+        <!--android:id="@+id/movieReleaseDate"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:paddingTop="4dp"-->
+        <!--android:text="2010-07-08"-->
+        <!--android:textColor="@color/white"-->
+        <!--android:textSize="12sp" />-->
+        <!--</LinearLayout>-->
+        <!--</FrameLayout>-->
+        <!---->
             <!--<RelativeLayout-->
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="match_parent"-->
             <!--android:background="@drawable/ripple"-->
             <!--android:clickable="true"-->
             <!--android:alpha="0.0"/>-->
-        </FrameLayout>
+        <!--</FrameLayout>-->
     </RelativeLayout>
 </android.support.v7.widget.CardView>

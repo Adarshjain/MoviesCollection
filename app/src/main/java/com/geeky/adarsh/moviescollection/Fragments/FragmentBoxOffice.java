@@ -20,7 +20,7 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.geeky.adarsh.moviescollection.Adapter.BoxOfficeAdapter;
-import com.geeky.adarsh.moviescollection.Fragments.Keys.Terms;
+import com.geeky.adarsh.moviescollection.Interfaces.Keys.Terms;
 import com.geeky.adarsh.moviescollection.R;
 import com.geeky.adarsh.moviescollection.Volley.VolleySingleton;
 import com.geeky.adarsh.moviescollection.pojo.MoviesDB;
@@ -136,7 +136,7 @@ public class FragmentBoxOffice extends Fragment implements SwipeRefreshLayout.On
 
                         JSONObject currentMovie = mJsonArray.getJSONObject(i);
                         title = currentMovie.getString(Terms.TITLE);
-                        posterPath = "http://image.tmdb.org/t/p/original" + currentMovie.getString(Terms.POSTER_PATH);
+                        posterPath = currentMovie.getString(Terms.POSTER_PATH);
                         overview = currentMovie.getString(Terms.OVERVIEW);
                         releaseDate = currentMovie.getString(Terms.RELEASE_DATE);
                         id = currentMovie.getString(Terms.ID);
@@ -163,6 +163,7 @@ public class FragmentBoxOffice extends Fragment implements SwipeRefreshLayout.On
         mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeTop10);
         mSwipeRefreshLayout.setOnRefreshListener(this);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.boxOfficeRecycler);
+        GridLayoutManager g = new GridLayoutManager(getActivity(), 2);
         mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         mBoxOfficeAdapter = new BoxOfficeAdapter(getActivity());
         mRecyclerView.setAdapter(mBoxOfficeAdapter);
@@ -170,15 +171,18 @@ public class FragmentBoxOffice extends Fragment implements SwipeRefreshLayout.On
             myMoviesDB = savedInstanceState.getParcelableArrayList(STATE_SAVE);
             mBoxOfficeAdapter.setMoviesList(myMoviesDB);
         } else {
-            sendJsonrequest();
+            mSwipeRefreshLayout.setRefreshing(true);
+            onRefresh();
+//            sendJsonrequest();
         }
         return view;
     }
 
     @Override
     public void onRefresh() {
-        Toast.makeText(getActivity(), "Refreshed!", Toast.LENGTH_SHORT).show();
         if (mSwipeRefreshLayout.isRefreshing())
+            Toast.makeText(getActivity(), "Loading Data...", Toast.LENGTH_SHORT).show();
+        sendJsonrequest();
             mSwipeRefreshLayout.setRefreshing(false);
     }
 }
