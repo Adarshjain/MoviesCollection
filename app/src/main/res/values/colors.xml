@@ -11,4 +11,7 @@
     <color name="text_secondary_dark">#8a000000</color> <!-- 54% -->
     <color name="text_tertiary_dark">#61000000</color> <!-- 38% -->
     <color name="text_primary_light">#ffffffff</color>
+    <color name="orange">#FF9800</color>
+    <color name="yellow">#FFEB3B</color>
+    <color name="green">#4CAF50</color>
 </resources>

@@ -5,34 +5,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class MoviesDB implements Parcelable {
-    private String Title;
-    private String PosterPath;
-    private String Overview;
-    private String ReleaseDate;
-    private String Id;
-    private Float Rating;
-    private String RatingCount;
-
-    public MoviesDB(String title, String posterPath, String overview, String releaseDate, String id, Float rating, String ratingCount) {
-        this.Title = title;
-        this.PosterPath = posterPath;
-        this.Overview = overview;
-        this.ReleaseDate = releaseDate;
-        this.Id = id;
-        this.Rating = rating;
-        this.RatingCount = ratingCount;
-    }
-
-    protected MoviesDB(Parcel in) {
-        Title = in.readString();
-        PosterPath = in.readString();
-        Overview = in.readString();
-        ReleaseDate = in.readString();
-        Id = in.readString();
-        RatingCount = in.readString();
-        Rating = Float.parseFloat(in.readString());
-    }
-
     public static final Creator<MoviesDB> CREATOR = new Creator<MoviesDB>() {
         @Override
         public MoviesDB createFromParcel(Parcel in) {
@@ -44,6 +16,36 @@ public class MoviesDB implements Parcelable {
             return new MoviesDB[size];
         }
     };
+    private String Title;
+    private String PosterPath;
+    private String Overview;
+    private String ReleaseDate;
+    private String Id;
+    private Float Rating;
+    private String RatingCount;
+    private String BackdropPath;
+
+    public MoviesDB(String title, String posterPath, String overview, String releaseDate, String id, Float rating, String ratingCount, String backdropPath) {
+        this.Title = title;
+        this.PosterPath = posterPath;
+        this.Overview = overview;
+        this.ReleaseDate = releaseDate;
+        this.Id = id;
+        this.Rating = rating;
+        this.RatingCount = ratingCount;
+        this.BackdropPath = backdropPath;
+    }
+
+    protected MoviesDB(Parcel in) {
+        Title = in.readString();
+        PosterPath = in.readString();
+        Overview = in.readString();
+        ReleaseDate = in.readString();
+        Id = in.readString();
+        RatingCount = in.readString();
+        Rating = Float.parseFloat(in.readString());
+        BackdropPath = in.readString();
+    }
 
     public String getTitle() {
         return Title;
@@ -87,5 +89,10 @@ public class MoviesDB implements Parcelable {
         parcel.writeString(Id);
         parcel.writeString(RatingCount);
         parcel.writeString(Rating.toString());
+        parcel.writeString(BackdropPath);
+    }
+
+    public String getBackdropPath() {
+        return BackdropPath;
     }
 }

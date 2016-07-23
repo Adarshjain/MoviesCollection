@@ -2,7 +2,9 @@ package com.geeky.adarsh.moviescollection;
 
 import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
@@ -36,6 +38,8 @@ public class DisplayMovie extends AppCompatActivity {
     private ImageLoader mImageLoaderx = mVolleySingleton.getImageLoader();
     private ImageLoader mImageLoader = mVolleySingleton.getImageLoader();
     private RequestQueue mRequestQueue = mVolleySingleton.getRequestQueue();
+    private CoordinatorLayout mCoordinatorLayout;
+    private AppBarLayout mAppBarLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,15 +48,21 @@ public class DisplayMovie extends AppCompatActivity {
         supportPostponeEnterTransition();
 
         Toolbar toolbar;
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         final Bundle b = getIntent().getExtras();
         String movieTitle = b.getString("movieTitle");
         String PosterUrl = b.getString("posterPath");
+        String BackdropPath = b.getString("backdropPath");
         final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         final CollapsingToolbarLayout collapsingToolbarLayout;
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         final NetworkImageView ix = (NetworkImageView) findViewById(R.id.moviePoster);
         final int[] color = {0xff000000};
-        final int[] bodyTextColor = {0xff000000};
+//        final int[] bodyTextColor = {0xff000000};
         mImageLoaderx.get(PosterUrl, new ImageLoader.ImageListener() {
 
             @Override
@@ -96,20 +106,14 @@ public class DisplayMovie extends AppCompatActivity {
                 }
             }
         });
-        ix.setImageUrl(PosterUrl, mImageLoader);
+        ix.setImageUrl(BackdropPath, mImageLoader);
         collapsingToolbarLayout.setTitle(movieTitle);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (toolbar != null) {
-            setSupportActionBar(toolbar);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
+
         fetchData();
 
 //        mCoordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordLay);
 //        mAppBarLayout = (AppBarLayout) findViewById(R.id.app_bar_layout);
-
-//        fab.setBackgroundColor(b.getInt("titleBarColor"));
-//        fab.setColorFilter(b.getInt("titleBarColor"));
+//
 //        mAppBarLayout.post(new Runnable() {
 //            @Override
 //            public void run() {
@@ -173,7 +177,7 @@ public class DisplayMovie extends AppCompatActivity {
 //        AppBarLayout.Behavior behavior = (AppBarLayout.Behavior) params.getBehavior();
 //        behavior.onNestedPreScroll(mCoordinatorLayout, mAppBarLayout, null, 0, offsetPx, new int[]{0, 0});
 //    }
-
+//
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 

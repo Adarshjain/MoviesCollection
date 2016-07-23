@@ -10,11 +10,11 @@ public interface Keys {
         String ID = "id";
         String RATING = "vote_average";
         String RATING_COUNT = "vote_count";
+        String BACKDROP_PATH = "backdrop_path";
     }
 
     interface Main {
         String ADULT = "adult";
-        String BACKDROP_PATH = "backdrop_path";
         String BELONGS_TO_COLLECTION = "belongs_to_collection";
         String BUDGET = "budget";
         String GENRE = "genre";
@@ -24,12 +24,13 @@ public interface Keys {
         String IMDB_ID = "imdb_id";
         String OVERVIEW = "overview";
         String PRODUCTION_COMPANIES = "production_companies";
-        String RELEASE_DATE = "release_date";
+        String RELEASE_DATE = "Released";
         String REVENUE = "revenue";
         String STATUS = "status";
         String TAGLINE = "tagline";
         String TITLE = "title";
-        String Rating = "vote_average";
+        String RATING = "vote_average";
+        String RUNTIME = "runtime";
         String RATING_COUNT = "vote_count";
         String CREDITS = "credits";
         String CAST = "cast";
@@ -49,5 +50,8 @@ public interface Keys {
         String REVIEWS = "reviews";
         String AUTHOR = "author";
         String CONTENT = "content";
+        String IMDB_RATING = "Rated";
+        String METASCORE = "Metascore";
+        String RATED = "Rated";
     }
 }

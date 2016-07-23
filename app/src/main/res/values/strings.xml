@@ -15,6 +15,10 @@
     <string name="spoken_languages">Spoken Languages</string>
     <string name="adult_content">Adult Content</string>
     <string name="external_links">External Links</string>
+    <string name="releaseDate">Release Date</string>
+    <string name="runtime">Runtime</string>
+    <string name="status">Status</string>
+    <string name="homepage">Homepage</string>
     <string-array name="tabs">
         <item>Search</item>
         <item>Top rated</item>

@@ -3,6 +3,7 @@ package com.geeky.adarsh.moviescollection.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -133,6 +134,7 @@ public class FragmentBoxOffice extends Fragment implements SwipeRefreshLayout.On
                         String id;
                         Float rating;
                         String ratingCount;
+                        String backdropPath;
 
                         JSONObject currentMovie = mJsonArray.getJSONObject(i);
                         title = currentMovie.getString(Terms.TITLE);
@@ -140,10 +142,11 @@ public class FragmentBoxOffice extends Fragment implements SwipeRefreshLayout.On
                         overview = currentMovie.getString(Terms.OVERVIEW);
                         releaseDate = currentMovie.getString(Terms.RELEASE_DATE);
                         id = currentMovie.getString(Terms.ID);
+                        backdropPath = currentMovie.getString(Terms.BACKDROP_PATH);
                         rating = Float.parseFloat(currentMovie.getString(Terms.RATING)) / 2;
                         ratingCount = currentMovie.getString(Terms.RATING_COUNT);
 
-                        MoviesDB current = new MoviesDB(title, posterPath, overview, releaseDate, id, rating, ratingCount);
+                        MoviesDB current = new MoviesDB(title, posterPath, overview, releaseDate, id, rating, ratingCount, backdropPath);
 
                         listMovies.add(current);
                     }
@@ -162,6 +165,7 @@ public class FragmentBoxOffice extends Fragment implements SwipeRefreshLayout.On
         xText = (TextView) view.findViewById(R.id.volleyErrorText);
         mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeTop10);
         mSwipeRefreshLayout.setOnRefreshListener(this);
+        mSwipeRefreshLayout.setColorSchemeColors(ContextCompat.getColor(getContext(), R.color.yellow), ContextCompat.getColor(getContext(), R.color.green));
         mRecyclerView = (RecyclerView) view.findViewById(R.id.boxOfficeRecycler);
         GridLayoutManager g = new GridLayoutManager(getActivity(), 2);
         mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
