@@ -32,4 +32,16 @@
         <item name="rippleColor">@color/black</item>
     </style>
 
+    <style name="FabStyleNext">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:src">@drawable/ic_arrow_forward_black_24dp</item>
+        <item name="borderWidth">0dp</item>
+        <item name="elevation">6dp</item>
+        <item name="pressedTranslationZ">12dp</item>
+        <item name="android:color">@color/white</item>
+        <item name="rippleColor">@color/black</item>
+    </style>
+
 </resources>

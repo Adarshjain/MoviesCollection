@@ -3,8 +3,8 @@
     <!--<color name="colorPrimary">#2196F3</color>-->
     <color name="colorPrimary">#121212</color>
     <color name="colorPrimaryDark">#000</color>
-    <color name="colorAccent">#FFEB3B</color>
-    <!--<color name="colorAccent">#68EFAD</color>-->
+    <!--<color name="colorAccent">#FFEB3B</color>-->
+    <color name="colorAccent">#FFF</color>
     <color name="white">#FFF</color>
     <color name="blueCallBack">#BDBDBD</color>
     <color name="text_primary_dark">#de000000</color> <!-- 87% -->
