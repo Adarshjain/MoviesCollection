@@ -2,9 +2,7 @@ package com.geeky.adarsh.moviescollection;
 
 import android.content.res.ColorStateList;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +10,7 @@ import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -38,8 +37,6 @@ public class DisplayMovie extends AppCompatActivity {
     private ImageLoader mImageLoaderx = mVolleySingleton.getImageLoader();
     private ImageLoader mImageLoader = mVolleySingleton.getImageLoader();
     private RequestQueue mRequestQueue = mVolleySingleton.getRequestQueue();
-    private CoordinatorLayout mCoordinatorLayout;
-    private AppBarLayout mAppBarLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +59,10 @@ public class DisplayMovie extends AppCompatActivity {
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         final NetworkImageView ix = (NetworkImageView) findViewById(R.id.moviePoster);
         final int[] color = {0xff000000};
-//        final int[] bodyTextColor = {0xff000000};
+        final LinearLayout ratingCard = (LinearLayout) findViewById(R.id.linearCard);
+//        final LinearLayout overviewCard = (LinearLayout) findViewById(R.id.overviewCard);
+        NetworkImageView poserImage = (NetworkImageView) findViewById(R.id.posterImage);
+        final int[] bodyTextColor = {0xff000000};
         mImageLoaderx.get(PosterUrl, new ImageLoader.ImageListener() {
 
             @Override
@@ -85,14 +85,16 @@ public class DisplayMovie extends AppCompatActivity {
 //                            Palette.Swatch mutedDarkSwatch = palette.getDarkMutedSwatch();
                             if (vibrantDarkSwatch != null) {
                                 color[0] = vibrantDarkSwatch.getRgb();
-//                                bodyTextColor[0] = vibrantDarkSwatch.getTitleTextColor();
+                                bodyTextColor[0] = vibrantDarkSwatch.getTitleTextColor();
 //                                collapsingToolbarLayout.setCollapsedTitleTextColor(bodyTextColor[0]);
                             }
 //                            collapsingToolbarLayout.setCollapsedTitleTextAppearance(color[0]);
                             collapsingToolbarLayout.setStatusBarScrimColor(color[0]);
                             collapsingToolbarLayout.setContentScrimColor(color[0]);
                             collapsingToolbarLayout.setBackgroundColor(color[0]);
-                            fab.setBackgroundTintList(ColorStateList.valueOf(color[0]));
+//                            fab.setBackgroundTintList(ColorStateList.valueOf(color[0]));
+                            ratingCard.setBackgroundColor(color[0]);
+//                            overviewCard.setBackgroundColor(color[0]);
                         }
                     });
 //                }
@@ -101,12 +103,17 @@ public class DisplayMovie extends AppCompatActivity {
                     collapsingToolbarLayout.setStatusBarScrimColor(color);
                     collapsingToolbarLayout.setContentScrimColor(color);
                     collapsingToolbarLayout.setBackgroundColor(color);
-                    fab.setBackgroundTintList(ColorStateList.valueOf(color));
+//                    fab.setBackgroundTintList(ColorStateList.valueOf(color));
+                    ratingCard.setBackgroundColor(color);
+//                    overviewCard.setBackgroundColor(color);
 //                    ix.setImageUrl(PosterUrl, mImageLoader);
                 }
             }
         });
+        fab.setBackgroundTintList(ColorStateList.valueOf(0xffffffff));
         ix.setImageUrl(BackdropPath, mImageLoader);
+        poserImage.setImageUrl(PosterUrl, mImageLoader);
+
         collapsingToolbarLayout.setTitle(movieTitle);
 
         fetchData();
@@ -167,7 +174,7 @@ public class DisplayMovie extends AppCompatActivity {
 
     }
 
-//    public int dpToPx(int dp) {
+    //    public int dpToPx(int dp) {
 //        DisplayMetrics displayMetrics = this.getResources().getDisplayMetrics();
 //        return Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
 //    }
