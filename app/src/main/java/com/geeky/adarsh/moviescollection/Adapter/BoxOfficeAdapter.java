@@ -90,7 +90,6 @@ public class BoxOfficeAdapter extends RecyclerView.Adapter<BoxOfficeAdapter.View
 
             @Override
             public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
-                Log.e("Volley Response", "Success");
                 holder.poster.setImageBitmap(response.getBitmap());
                 holder.poster.buildDrawingCache();
                 bit[0] = holder.poster.getDrawingCache();
@@ -125,13 +124,11 @@ public class BoxOfficeAdapter extends RecyclerView.Adapter<BoxOfficeAdapter.View
                 Bundle b = new Bundle();
                 b.putString("movieTitle", movieTitle);
                 b.putString("backdropPath", "http://image.tmdb.org/t/p/w500" + BackdropPath);
-                b.putString("posterPath", "http://image.tmdb.org/t/p/original" + Url);
+                b.putString("posterPath", "http://image.tmdb.org/t/p/w300" + Url);
                 b.putString("id", id);
                 b.putInt("colors", color[0]);
                 Intent intent = new Intent(c, DisplayMovie.class);
                 intent.putExtras(b);
-
-
 //                b.putInt("titleBarColor", color[0]);
 //                if (bit[0] != null) {
 //                    Log.e("Volley Response", "Successive");

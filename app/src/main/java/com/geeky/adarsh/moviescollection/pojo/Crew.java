@@ -2,20 +2,20 @@ package com.geeky.adarsh.moviescollection.pojo;
 
 
 public class Crew {
-    private String Dept = null;
+    private String Name = null;
     private Long Id = -1L;
     private String Job = null;
     private String ProfilePath = null;
 
     public Crew(String dept, Long id, String job, String profilePath) {
-        this.Dept = dept;
+        this.Name = dept;
         this.Id = id;
         this.Job = job;
         this.ProfilePath = profilePath;
     }
 
     public String getDept() {
-        return Dept;
+        return Name;
     }
 
     public Long getId() {

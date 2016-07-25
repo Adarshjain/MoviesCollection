@@ -19,6 +19,21 @@
     <string name="runtime">Runtime</string>
     <string name="status">Status</string>
     <string name="homepage">Homepage</string>
+    <string name="metascore">Metascore</string>
+    <string name="imdb">IMDb</string>
+    <string name="tmdb">TMDb</string>
+    <string name="rating">Rating</string>
+    <string name="cast">Cast</string>
+    <string name="crew">Crew</string>
+    <string name="openExt">Open External</string>
+    <string name="belongsToCollection">Belongs To Collection</string>
+    <string name="collection_poster">Collection Poster</string>
+    <string name="go_to_collection">Go to Collection</string>
+    <string name="simMov">Similar Movies</string>
+    <string name="imdblogo">ImdbLogo</string>
+    <string name="tomato_consensus">- Tomato Consensus</string>
+    <string name="rated">Rated</string>
+    <string name="awards">Awards</string>
     <string-array name="tabs">
         <item>Search</item>
         <item>Top rated</item>

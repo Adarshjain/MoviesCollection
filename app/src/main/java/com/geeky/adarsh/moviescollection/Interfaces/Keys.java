@@ -17,14 +17,14 @@ public interface Keys {
         String ADULT = "adult";
         String BELONGS_TO_COLLECTION = "belongs_to_collection";
         String BUDGET = "budget";
-        String GENRE = "genre";
+        String GENRE = "genres";
         String ID = "id";
         String NAME = "name";
         String HOMEPAGE = "homepage";
         String IMDB_ID = "imdb_id";
         String OVERVIEW = "overview";
         String PRODUCTION_COMPANIES = "production_companies";
-        String RELEASE_DATE = "Released";
+        String RELEASED = "Released";
         String REVENUE = "revenue";
         String STATUS = "status";
         String TAGLINE = "tagline";
@@ -34,6 +34,7 @@ public interface Keys {
         String RATING_COUNT = "vote_count";
         String CREDITS = "credits";
         String CAST = "cast";
+        String CREW = "crew";
         String CHARACTER = "character";
         String PROFILE_PATH = "profile_path";
         String DEPARTMENT = "department";
@@ -50,8 +51,17 @@ public interface Keys {
         String REVIEWS = "reviews";
         String AUTHOR = "author";
         String CONTENT = "content";
-        String IMDB_RATING = "Rated";
+        String IMDB_RATING = "imdbRating";
         String METASCORE = "Metascore";
         String RATED = "Rated";
+        String LOGO_PATH = "logo_path";
+        String AWARDS = "Awards";
+        String IMDB_VOTES = "imdbVotes";
+        String TOMATO_METER = "tomatoMeter";
+        String TOMATO_RATING = "tomatoRating";
+        String TOMATO_CONSENSUS = "tomatoConsensus";
+        String TOMATO_USER_METER = "tomatoUserMeter";
+        String TOMATO_USER_RATING = "tomatoUserRating";
+        String TOMATO_URL = "tomatoURL";
     }
 }
