@@ -103,6 +103,8 @@ public class FragmentBoxOffice extends Fragment implements SwipeRefreshLayout.On
 
                     @Override
                     public void onResponse(JSONObject response) {
+                        mSwipeRefreshLayout.setVisibility(View.VISIBLE);
+                        xText.setVisibility(View.GONE);
                         myMoviesDB = parseJsonresponse(response);
                         mBoxOfficeAdapter.setMoviesList(myMoviesDB);
                     }
@@ -113,6 +115,9 @@ public class FragmentBoxOffice extends Fragment implements SwipeRefreshLayout.On
                     public void onErrorResponse(VolleyError error) {
                         if (error instanceof TimeoutError || error instanceof NoConnectionError) {
                             Toast.makeText(getActivity(), "No Internet Connection", Toast.LENGTH_LONG).show();
+                            xText.setText("No Internet Connection!");
+                            mSwipeRefreshLayout.setVisibility(View.GONE);
+                            xText.setVisibility(View.VISIBLE);
                         }
                     }
                 });
@@ -167,7 +172,7 @@ public class FragmentBoxOffice extends Fragment implements SwipeRefreshLayout.On
         mSwipeRefreshLayout.setOnRefreshListener(this);
         mSwipeRefreshLayout.setColorSchemeColors(ContextCompat.getColor(getContext(), R.color.yellow), ContextCompat.getColor(getContext(), R.color.green));
         mRecyclerView = (RecyclerView) view.findViewById(R.id.boxOfficeRecycler);
-        GridLayoutManager g = new GridLayoutManager(getActivity(), 2);
+//        GridLayoutManager g = new GridLayoutManager(getActivity(), 2);
         mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         mBoxOfficeAdapter = new BoxOfficeAdapter(getActivity());
         mRecyclerView.setAdapter(mBoxOfficeAdapter);
@@ -177,7 +182,6 @@ public class FragmentBoxOffice extends Fragment implements SwipeRefreshLayout.On
         } else {
             mSwipeRefreshLayout.setRefreshing(true);
             onRefresh();
-//            sendJsonrequest();
         }
         return view;
     }

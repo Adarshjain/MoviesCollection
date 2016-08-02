@@ -3,11 +3,11 @@ package com.geeky.adarsh.moviescollection.pojo;
 
 public class Cast {
     private String Character = null;
-    private Long Id = -1L;
+    private String Id = null;
     private String Name = null;
     private String ProfilePath = null;
 
-    public Cast(String character, Long id, String name, String profilePath) {
+    public Cast(String character, String id, String name, String profilePath) {
         this.Character = character;
         this.Id = id;
         this.Name = name;
@@ -18,7 +18,7 @@ public class Cast {
         return Character;
     }
 
-    public Long getId() {
+    public String getId() {
         return Id;
     }
 

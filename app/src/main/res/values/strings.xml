@@ -34,6 +34,7 @@
     <string name="tomato_consensus">- Tomato Consensus</string>
     <string name="rated">Rated</string>
     <string name="awards">Awards</string>
+    <string name="go_to_homepage">Go to Homepage</string>
     <string-array name="tabs">
         <item>Search</item>
         <item>Top rated</item>

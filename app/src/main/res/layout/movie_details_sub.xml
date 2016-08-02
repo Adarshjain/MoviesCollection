@@ -240,9 +240,11 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:textColor="@color/white"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:visibility="gone" />
 
             <TextView
+                android:id="@+id/tctv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
@@ -252,7 +254,8 @@
                 android:alpha="0.9"
                 android:text="@string/tomato_consensus"
                 android:textColor="@color/white"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:visibility="gone" />
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
@@ -275,7 +278,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
                 android:text="@string/overview"
                 android:textColor="@color/text_secondary_dark"
                 android:textSize="14sp" />
@@ -285,6 +287,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                android:layout_marginTop="12dp"
                 android:textColor="@color/text_primary_dark"
                 android:textIsSelectable="true"
                 android:textSize="24sp" />
@@ -350,6 +353,7 @@
                 android:layout_alignBaseline="@+id/movieReleaseDate"
                 android:layout_toEndOf="@id/movieReleaseDate"
                 android:paddingStart="8dp"
+                android:paddingEnd="8dp"
                 android:textSize="12sp" />
 
             <TextView
@@ -368,6 +372,7 @@
                 android:layout_alignBaseline="@+id/movieRuntime"
                 android:layout_toEndOf="@+id/movieRuntime"
                 android:paddingStart="8dp"
+                android:paddingEnd="8dp"
                 android:textSize="12sp" />
 
             <TextView
@@ -388,6 +393,7 @@
                 android:layout_marginBottom="8dp"
                 android:layout_toEndOf="@+id/movieStatus"
                 android:paddingStart="8dp"
+                android:paddingEnd="8dp"
                 android:textSize="12sp" />
 
             <View
@@ -461,6 +467,7 @@
                 android:layout_alignBaseline="@+id/movieGenre"
                 android:layout_toEndOf="@+id/movieGenre"
                 android:paddingStart="8dp"
+                android:paddingEnd="8dp"
                 android:paddingTop="8dp"
                 android:textSize="12sp" />
 
@@ -480,6 +487,7 @@
                 android:layout_alignBaseline="@+id/movieAward"
                 android:layout_toEndOf="@+id/movieAward"
                 android:paddingStart="8dp"
+                android:paddingEnd="8dp"
                 android:paddingTop="8dp"
                 android:textSize="12sp" />
 
@@ -499,44 +507,52 @@
                 android:layout_alignBaseline="@+id/movieAdult"
                 android:layout_toEndOf="@+id/movieAdult"
                 android:paddingStart="8dp"
+                android:paddingEnd="8dp"
                 android:paddingTop="8dp"
                 android:textSize="12sp" />
 
-            <TextView
-                android:id="@+id/movieHomepage"
+            <LinearLayout
+                android:id="@+id/homp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/adult"
-                android:paddingTop="8dp"
-                android:text="@string/homepage"
-                android:textSize="16sp" />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/homepage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/movieHomepage"
-                android:layout_toEndOf="@+id/movieHomepage"
-                android:paddingStart="8dp"
-                android:paddingTop="8dp"
-                android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/movieHomepage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="8dp"
+                    android:text="@string/homepage"
+                    android:textSize="16sp" />
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_alignBottom="@+id/homepage"
-                android:layout_marginStart="8dp"
-                android:layout_toEndOf="@+id/homepage"
-                android:alpha="0.5"
-                android:contentDescription="@string/openExt"
-                android:src="@drawable/ic_open_in_new_black_24dp" />
+                <TextView
+                    android:id="@+id/homepage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:paddingTop="8dp"
+                    android:text="@string/go_to_homepage"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="10dp"
+                    android:alpha="0.5"
+                    android:contentDescription="@string/openExt"
+                    android:src="@drawable/ic_open_in_new_black_24dp" />
+            </LinearLayout>
 
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 
     <LinearLayout
+        android:id="@+id/cast"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -580,6 +596,7 @@
                             android:layout_width="110dp"
                             android:layout_height="130dp"
                             android:adjustViewBounds="true"
+                            android:background="@drawable/placeholderperson"
                             android:contentDescription="@string/cast"
                             android:scaleType="centerCrop" />
 
@@ -627,6 +644,7 @@
                             android:layout_width="110dp"
                             android:layout_height="130dp"
                             android:adjustViewBounds="true"
+                            android:background="@drawable/placeholderperson"
                             android:contentDescription="@string/cast"
                             android:scaleType="centerCrop" />
 
@@ -674,6 +692,7 @@
                             android:layout_width="110dp"
                             android:layout_height="130dp"
                             android:adjustViewBounds="true"
+                            android:background="@drawable/placeholderperson"
                             android:contentDescription="@string/cast"
                             android:scaleType="centerCrop" />
 
@@ -723,6 +742,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/crew"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -765,6 +785,7 @@
                             android:layout_width="110dp"
                             android:layout_height="130dp"
                             android:adjustViewBounds="true"
+                            android:background="@drawable/placeholderperson"
                             android:contentDescription="@string/crew"
                             android:scaleType="centerCrop" />
 
@@ -812,6 +833,7 @@
                             android:layout_width="110dp"
                             android:layout_height="130dp"
                             android:adjustViewBounds="true"
+                            android:background="@drawable/placeholderperson"
                             android:contentDescription="@string/crew"
                             android:scaleType="centerCrop" />
 
@@ -859,6 +881,7 @@
                             android:layout_width="110dp"
                             android:layout_height="130dp"
                             android:adjustViewBounds="true"
+                            android:background="@drawable/placeholderperson"
                             android:contentDescription="@string/crew"
                             android:scaleType="centerCrop" />
 
@@ -1058,8 +1081,9 @@
                             android:layout_width="110dp"
                             android:layout_height="130dp"
                             android:adjustViewBounds="true"
+                            android:background="@drawable/placeholdercompany"
                             android:contentDescription="@string/production_companies"
-                            android:scaleType="centerCrop" />
+                            android:scaleType="fitCenter" />
 
 
                         <TextView
@@ -1090,15 +1114,9 @@
                             android:layout_width="110dp"
                             android:layout_height="130dp"
                             android:adjustViewBounds="true"
+                            android:background="@drawable/placeholdercompany"
                             android:contentDescription="@string/production_companies"
-                            android:scaleType="centerCrop" />
-
-                        <!--<LinearLayout-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginEnd="8dp"-->
-                        <!--android:layout_marginStart="8dp"-->
-                        <!--android:orientation="vertical">-->
+                            android:scaleType="fitCenter" />
 
                         <TextView
                             android:id="@+id/prodComp2Name"
@@ -1106,14 +1124,6 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="8dp"
                             android:textSize="16sp" />
-
-                        <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginBottom="8dp"-->
-                        <!--android:text="Metacritic"-->
-                        <!--android:textSize="12sp" />-->
-                        <!--</LinearLayout>-->
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
 
@@ -1135,15 +1145,10 @@
                             android:layout_width="110dp"
                             android:layout_height="130dp"
                             android:adjustViewBounds="true"
+                            android:background="@drawable/placeholdercompany"
                             android:contentDescription="@string/production_companies"
-                            android:scaleType="centerCrop" />
+                            android:scaleType="fitCenter" />
 
-                        <!--<LinearLayout-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginEnd="8dp"-->
-                        <!--android:layout_marginStart="8dp"-->
-                        <!--android:orientation="vertical">-->
 
                         <TextView
                             android:id="@+id/prodComp3Name"
@@ -1152,13 +1157,6 @@
                             android:layout_margin="8dp"
                             android:textSize="16sp" />
 
-                        <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginBottom="8dp"-->
-                        <!--android:text="Metacritic"-->
-                        <!--android:textSize="12sp" />-->
-                        <!--</LinearLayout>-->
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
 
@@ -1199,6 +1197,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/similar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -1231,43 +1230,48 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp">
 
-                    <LinearLayout
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <com.android.volley.toolbox.NetworkImageView
-                            android:id="@+id/simMov1Poster"
-                            android:layout_width="110dp"
-                            android:layout_height="140dp"
-                            android:adjustViewBounds="true"
-                            android:contentDescription="@string/simMov"
-                            android:scaleType="centerCrop" />
+                        android:layout_height="wrap_content">
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="80dp"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginStart="8dp"
+                            android:layout_height="wrap_content"
                             android:orientation="vertical">
 
-                            <TextView
-                                android:id="@+id/simMov1Name"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="8dp"
-                                android:layout_marginTop="8dp"
-                                android:textSize="16sp" />
+                            <com.android.volley.toolbox.NetworkImageView
+                                android:id="@+id/simMov1Poster"
+                                android:layout_width="110dp"
+                                android:layout_height="140dp"
+                                android:adjustViewBounds="true"
+                                android:contentDescription="@string/simMov"
+                                android:scaleType="centerCrop" />
 
-                            <!--<TextView-->
-                            <!--android:id="@+id/simMov1Year"-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_marginBottom="8dp"-->
-                            <!--android:textSize="12sp" />-->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:orientation="vertical">
 
+                                <TextView
+                                    android:id="@+id/simMov1Name"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="8dp"
+                                    android:layout_marginTop="8dp"
+                                    android:textSize="16sp" />
+
+
+                            </LinearLayout>
                         </LinearLayout>
-                    </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/simMovOnClick1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal" />
+                    </FrameLayout>
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
@@ -1278,43 +1282,48 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp">
 
-                    <LinearLayout
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <com.android.volley.toolbox.NetworkImageView
-                            android:id="@+id/simMov2Poster"
-                            android:layout_width="110dp"
-                            android:layout_height="140dp"
-                            android:adjustViewBounds="true"
-                            android:contentDescription="@string/simMov"
-                            android:scaleType="centerCrop" />
+                        android:layout_height="wrap_content">
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="80dp"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginStart="8dp"
+                            android:layout_height="wrap_content"
                             android:orientation="vertical">
 
-                            <TextView
-                                android:id="@+id/simMov2Name"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="8dp"
-                                android:layout_marginTop="8dp"
-                                android:textSize="16sp" />
+                            <com.android.volley.toolbox.NetworkImageView
+                                android:id="@+id/simMov2Poster"
+                                android:layout_width="110dp"
+                                android:layout_height="140dp"
+                                android:adjustViewBounds="true"
+                                android:contentDescription="@string/simMov"
+                                android:scaleType="centerCrop" />
 
-                            <!--<TextView-->
-                            <!--android:id="@+id/simMov2Year"-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_marginBottom="8dp"-->
-                            <!--android:textSize="12sp" />-->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:orientation="vertical">
 
+                                <TextView
+                                    android:id="@+id/simMov2Name"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="8dp"
+                                    android:layout_marginTop="8dp"
+                                    android:textSize="16sp" />
+
+
+                            </LinearLayout>
                         </LinearLayout>
-                    </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/simMovOnClick2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal" />
+                    </FrameLayout>
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
@@ -1325,43 +1334,47 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <com.android.volley.toolbox.NetworkImageView
-                            android:id="@+id/simMov3Poster"
-                            android:layout_width="110dp"
-                            android:layout_height="140dp"
-                            android:adjustViewBounds="true"
-                            android:contentDescription="@string/simMov"
-                            android:scaleType="centerCrop" />
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="80dp"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginStart="8dp"
+                            android:layout_height="wrap_content"
                             android:orientation="vertical">
 
-                            <TextView
-                                android:id="@+id/simMov3Name"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="8dp"
-                                android:layout_marginTop="8dp"
-                                android:textSize="16sp" />
+                            <com.android.volley.toolbox.NetworkImageView
+                                android:id="@+id/simMov3Poster"
+                                android:layout_width="110dp"
+                                android:layout_height="140dp"
+                                android:adjustViewBounds="true"
+                                android:contentDescription="@string/simMov"
+                                android:scaleType="centerCrop" />
 
-                            <!--<TextView-->
-                            <!--android:id="@+id/simMov3Year"-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_marginBottom="8dp"-->
-                            <!--android:textSize="12sp" />-->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:orientation="vertical">
 
+                                <TextView
+                                    android:id="@+id/simMov3Name"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="8dp"
+                                    android:layout_marginTop="8dp"
+                                    android:textSize="16sp" />
+
+                            </LinearLayout>
                         </LinearLayout>
-                    </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/simMovOnClick3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal" />
+                    </FrameLayout>
                 </android.support.v7.widget.CardView>
 
                 <RelativeLayout
@@ -1385,29 +1398,3 @@
     </LinearLayout>
 
 </LinearLayout>
-
-    <!--<ImageView--><!--android:layout_width="24dp"--><!--android:layout_height="24dp" />--><!--<LinearLayout--><!--android:layout_width="wrap_content"--><!--android:layout_height="wrap_content"--><!--android:orientation="horizontal">-->
-
-    <!--<TextView--><!--android:layout_width="wrap_content"--><!--android:layout_height="wrap_content"--><!--android:text="@string/metascore"--><!--android:textColor="@color/white"--><!--android:textSize="20sp" />-->
-
-    <!--<TextView--><!--android:id="@+id/metaRating"--><!--android:layout_width="wrap_content"--><!--android:layout_height="wrap_content"--><!--android:layout_marginStart="16dp"--><!--android:textColor="@color/white"--><!--android:textSize="14sp" />-->
-
-    <!--&lt;!&ndash;<ImageView&ndash;&gt;--><!--&lt;!&ndash;android:layout_width="16dp"&ndash;&gt;--><!--&lt;!&ndash;android:layout_height="16dp"&ndash;&gt;--><!--&lt;!&ndash;android:baselineAlignBottom="true"&ndash;&gt;--><!--&lt;!&ndash;android:src="@drawable/ic_star_rate_black_18dp" />&ndash;&gt;--><!--</LinearLayout>--><!----><!--<LinearLayout--><!--android:layout_width="wrap_content"--><!--android:layout_height="wrap_content"--><!--android:layout_marginTop="8dp"--><!--android:orientation="horizontal">-->
-
-    <!--<TextView--><!--android:layout_width="wrap_content"--><!--android:layout_height="wrap_content"--><!--android:text="@string/imdb"--><!--android:textColor="@color/white"--><!--android:textSize="20sp" />-->
-
-    <!--<TextView--><!--android:id="@+id/imdbRating"--><!--android:layout_width="wrap_content"--><!--android:layout_height="wrap_content"--><!--android:layout_marginStart="16dp"--><!--android:textColor="@color/white" />-->
-
-    <!--</LinearLayout>--><!----><!--<LinearLayout--><!--android:layout_width="wrap_content"--><!--android:layout_height="wrap_content"--><!--android:layout_marginTop="8dp"--><!--android:orientation="horizontal">-->
-
-    <!--<TextView--><!--android:layout_width="wrap_content"--><!--android:layout_height="wrap_content"--><!--android:text="@string/tmdb"--><!--android:textColor="@color/white"--><!--android:textSize="20sp" />-->
-
-    <!--<TextView--><!--android:id="@+id/tmdbRating"--><!--android:layout_width="wrap_content"--><!--android:layout_height="wrap_content"--><!--android:layout_marginStart="16dp"--><!--android:textColor="@color/white" />-->
-
-    <!--&lt;!&ndash;<ImageView&ndash;&gt;--><!--&lt;!&ndash;android:layout_width="16dp"&ndash;&gt;--><!--&lt;!&ndash;android:layout_height="16dp"&ndash;&gt;--><!--&lt;!&ndash;android:baselineAlignBottom="true"&ndash;&gt;--><!--&lt;!&ndash;android:src="@drawable/ic_star_rate_black_18dp" />&ndash;&gt;--><!--</LinearLayout>--><!----><!--<LinearLayout--><!--android:layout_width="wrap_content"--><!--android:layout_height="wrap_content"--><!--android:layout_marginTop="8dp"--><!--android:orientation="horizontal">-->
-
-    <!--<TextView--><!--android:layout_width="wrap_content"--><!--android:layout_height="wrap_content"--><!--android:text="@string/rating"--><!--android:textColor="@color/white"--><!--android:textSize="20sp"--><!--android:id="@+id/textView" />-->
-
-    <!--<TextView--><!--android:id="@+id/splRating"--><!--android:layout_width="wrap_content"--><!--android:layout_height="wrap_content"--><!--android:layout_marginStart="16dp"--><!--android:textColor="@color/white" />-->
-
-    <!--</LinearLayout>-->

@@ -18,16 +18,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DisplayMovie">
+        <activity
+            android:name=".DisplayMovie"
+            android:launchMode="singleTask"
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
         <activity
-            android:name=".Testing.Bla"
-            android:excludeFromRecents="true"
-            android:taskAffinity=""
-            android:theme="@style/Theme.Sliding.Light" />
+            android:name=".ImageviewFull"
+            android:parentActivityName=".DisplayMovie">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".DisplayMovie" />
+        </activity>
+        <activity
+            android:name=".DisplayMovieSimilar"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".DisplayMovieSimilar2"
+            android:launchMode="singleTask" />
     </application>
 
 </manifest>

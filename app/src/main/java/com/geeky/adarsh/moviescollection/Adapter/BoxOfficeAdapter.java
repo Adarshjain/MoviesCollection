@@ -1,10 +1,13 @@
 package com.geeky.adarsh.moviescollection.Adapter;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -28,6 +31,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
+import static android.support.v4.app.ActivityCompat.startActivity;
 
 
 public class BoxOfficeAdapter extends RecyclerView.Adapter<BoxOfficeAdapter.ViewHolderBoxOffice> {
@@ -57,7 +62,6 @@ public class BoxOfficeAdapter extends RecyclerView.Adapter<BoxOfficeAdapter.View
         return new ViewHolderBoxOffice(view);
     }
 
-    //    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(final ViewHolderBoxOffice holder, int position) {
         MoviesDB currentMovie = myMoviesDb.get(position);
@@ -70,10 +74,8 @@ public class BoxOfficeAdapter extends RecyclerView.Adapter<BoxOfficeAdapter.View
 
         } catch (ParseException ignored) {
         }
-//        final Float rating = currentMovie.getRating();
         final String Url = currentMovie.getPosterPath();
         final String id = currentMovie.getId();
-//        final String rating2 = " (" + currentMovie.getRatingCount() + ")";
         holder.movieTitle.setText(movieTitle);
 
         holder.releaseDate.setText(releaseDate);
@@ -93,7 +95,6 @@ public class BoxOfficeAdapter extends RecyclerView.Adapter<BoxOfficeAdapter.View
                 holder.poster.setImageBitmap(response.getBitmap());
                 holder.poster.buildDrawingCache();
                 bit[0] = holder.poster.getDrawingCache();
-//        final Bitmap bit = holder.poster.getDrawingCache();
                 if (bit[0] != null) {
                     Palette.from(bit[0]).clearFilters().generate(new Palette.PaletteAsyncListener() {
                         @Override
@@ -101,22 +102,12 @@ public class BoxOfficeAdapter extends RecyclerView.Adapter<BoxOfficeAdapter.View
                             Palette.Swatch vibrantDarkSwatch = palette.getDarkVibrantSwatch();
                             if (vibrantDarkSwatch != null)
                                 color[0] = vibrantDarkSwatch.getRgb();
-//                    Log.e("ColorB", "" + color[0]);
-//                    color[0] = palette.getMutedColor(0xff000000);
-//                    Log.e("ColorA", "" + color[0]);
                             holder.paletteFrame.setBackgroundColor(color[0]);
                         }
                     });
                 }
             }
         });
-//        holder.paletteFrame.setAlpha(0.7F);
-//        holder.rating.setText(rating.toString());
-//        holder.rating2.setText(rating2);
-
-//        holder.poster.buildDrawingCache();
-
-
         holder.llview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -126,39 +117,9 @@ public class BoxOfficeAdapter extends RecyclerView.Adapter<BoxOfficeAdapter.View
                 b.putString("backdropPath", "http://image.tmdb.org/t/p/w500" + BackdropPath);
                 b.putString("posterPath", "http://image.tmdb.org/t/p/w300" + Url);
                 b.putString("id", id);
-                b.putInt("colors", color[0]);
                 Intent intent = new Intent(c, DisplayMovie.class);
                 intent.putExtras(b);
-//                b.putInt("titleBarColor", color[0]);
-//                if (bit[0] != null) {
-//                    Log.e("Volley Response", "Successive");
-//                    intent.putExtra("BitmapImage", bit[0]);
-//                }
-//                b.putString("releaseDate", releaseDate);
-//                b.putFloat("rating", rating);
-//                b.putString("rating2", rating2);
-//                setSharedElementReturnTransition(TransitionInflater.from(getActivity()).inflateTransition(R.transition.change_image_transform));
-//                setExitTransition(TransitionInflater.from(getActivity()).inflateTransition(android.R.transition.explode));
-//
-//                 Create new fragment to add (Fragment B)
-//                Fragment fragment = new ImageFragment();
-//                fragment.setSharedElementEnterTransition(TransitionInflater.from(getActivity()).inflateTransition(R.transition.change_image_transform));
-//                fragment.setEnterTransition(TransitionInflater.from(getActivity()).inflateTransition(android.R.transition.explode));
-//
-//                 Our shared element (in Fragment A)
-//                mProductImage   = (ImageView) mLayout.findViewById(R.id.product_detail_image);
-//
-//                 Add Fragment B
-//                FragmentTransaction ft = getFragmentManager().beginTransaction()
-//                        .replace(R.id.container, fragment)
-//                        .addToBackStack("transaction")
-//                        .addSharedElement(mProductImage, "MyTransition");
-//                ft.commit();
 
-//                holder.poster.setTransitionName("poster");
-//                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) con,holder.poster,holder.poster.getTransitionName());
-//                Log.e("Animation", "Success");
-//                ActivityCompat.startActivity((Activity) con,intent,options.toBundle());,options.toBundle()
                 c.startActivity(intent);
             }
         });
@@ -183,10 +144,7 @@ public class BoxOfficeAdapter extends RecyclerView.Adapter<BoxOfficeAdapter.View
             paletteFrame = (LinearLayout) itemView.findViewById(R.id.palette_frame);
             movieTitle = (TextView) itemView.findViewById(R.id.movieTitle);
             releaseDate = (TextView) itemView.findViewById(R.id.movieReleaseDate);
-//            rating2 = (TextView) itemView.findViewById(R.id.rating2);
-//            rating = (TextView) itemView.findViewById(R.id.rating);
             poster = (NetworkImageView) itemView.findViewById(R.id.movieImage);
-//            genre = (TextView) itemView.findViewById(R.id.genre);
         }
     }
 }

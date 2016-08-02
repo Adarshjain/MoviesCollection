@@ -22,6 +22,7 @@ public interface Keys {
         String NAME = "name";
         String HOMEPAGE = "homepage";
         String IMDB_ID = "imdb_id";
+        String BACKDROP_PATH = "backdrop_path";
         String OVERVIEW = "overview";
         String PRODUCTION_COMPANIES = "production_companies";
         String RELEASED = "Released";
