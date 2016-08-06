@@ -32,6 +32,7 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.NetworkImageView;
 import com.geeky.adarsh.moviescollection.Fragments.CastFullFragment;
+import com.geeky.adarsh.moviescollection.Fragments.CastInfoFragment;
 import com.geeky.adarsh.moviescollection.Fragments.CrewFullFragment;
 import com.geeky.adarsh.moviescollection.Fragments.DisplayMovieFragment;
 import com.geeky.adarsh.moviescollection.Fragments.MainFragment;
@@ -207,7 +208,7 @@ public class DisplayMovie extends AppCompatActivity {
         b.putInt("tagger",tagger+1);
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction ft = manager.beginTransaction();
-        Fragment mainFragment = SimilarMoviesFullFragment.newInstance("", "");
+        Fragment mainFragment = CastInfoFragment.newInstance("", "");
         mainFragment.setArguments(b);
         ft.replace(R.id.dummy_main_2, mainFragment,"Tag" + tagger);
         ft.addToBackStack("Tag" + tagger);

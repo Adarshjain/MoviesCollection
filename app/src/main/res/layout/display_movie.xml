@@ -3,14 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frag_holder"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context="com.geeky.adarsh.moviescollection.DisplayMovie">
 
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/coordLay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        tools:context="com.geeky.adarsh.moviescollection.DisplayMovie">
+        android:fitsSystemWindows="true">
 
         <android.support.design.widget.AppBarLayout
             android:id="@+id/app_bar_layout"
@@ -44,9 +44,7 @@
                     android:layout_height="?attr/actionBarSize"
                     app:layout_collapseMode="pin"
                     app:layout_scrollFlags="scroll|enterAlways"
-                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
-                </android.support.v7.widget.Toolbar>
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
             </android.support.design.widget.CollapsingToolbarLayout>
 
         </android.support.design.widget.AppBarLayout>
