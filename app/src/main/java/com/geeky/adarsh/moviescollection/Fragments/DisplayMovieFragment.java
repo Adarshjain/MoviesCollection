@@ -822,7 +822,7 @@ public class DisplayMovieFragment extends Fragment {
     }
 
     private void fetchCredits() {
-        String fetchDataUrl = "https://api.themoviedb.org/3/movie/" + id + "/credits?api_key=39f9635028e0a25da413d4e90255bb20";
+        final String fetchDataUrl = "https://api.themoviedb.org/3/movie/" + id + "/credits?api_key=39f9635028e0a25da413d4e90255bb20";
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, fetchDataUrl, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -873,6 +873,30 @@ public class DisplayMovieFragment extends Fragment {
                                     CrewPosterV[i].setImageUrl("http://image.tmdb.org/t/p/w150" + CrewProfile, mImageLoader);
                             }
                         }
+                        CastFullV.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Bundle b = new Bundle();
+                                b.putString("fetchDataUrl",fetchDataUrl);
+                                b.putInt("color",color[0]);
+                                b.putString("movieTitle",movieTitle);
+                                Activity activity = getActivity();
+                                if (activity != null && isAdded())
+                                    ((DisplayMovie) activity).changeCast(b, Tagger);
+                            }
+                        });
+                        CrewFullV.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Bundle b = new Bundle();
+                                b.putString("movieTitle",movieTitle);
+                                b.putString("fetchDataUrl",fetchDataUrl);
+                                b.putInt("color",color[0]);
+                                Activity activity = getActivity();
+                                if (activity != null && isAdded())
+                                    ((DisplayMovie) activity).changeCrew(b, Tagger);
+                            }
+                        });
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

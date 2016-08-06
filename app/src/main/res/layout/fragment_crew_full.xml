@@ -9,7 +9,7 @@
         layout="@layout/app_bar_padding" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/cast_full_recycler"
+        android:id="@+id/crew_full_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/appBarPadding"

@@ -1,7 +1,10 @@
 package com.geeky.adarsh.moviescollection.pojo;
 
 
-public class Cast {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Cast implements Parcelable {
     private String Character = null;
     private String Id = null;
     private String Name = null;
@@ -13,6 +16,25 @@ public class Cast {
         this.Name = name;
         this.ProfilePath = profilePath;
     }
+
+    private Cast(Parcel in) {
+        Character = in.readString();
+        Id = in.readString();
+        Name = in.readString();
+        ProfilePath = in.readString();
+    }
+
+    public static final Creator<Cast> CREATOR = new Creator<Cast>() {
+        @Override
+        public Cast createFromParcel(Parcel in) {
+            return new Cast(in);
+        }
+
+        @Override
+        public Cast[] newArray(int size) {
+            return new Cast[size];
+        }
+    };
 
     public String getCharacter() {
         return Character;
@@ -28,5 +50,18 @@ public class Cast {
 
     public String getProfilePath() {
         return ProfilePath;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(Character);
+        parcel.writeString(Id);
+        parcel.writeString(Name);
+        parcel.writeString(ProfilePath);
     }
 }

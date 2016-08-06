@@ -124,7 +124,6 @@ public class SimilarMoviesFullFragment extends Fragment {
         if (response.has(Keys.Main.RESULTS) && !response.isNull(Keys.Main.RESULTS)) {
             try {
                 SimMovArray = response.getJSONArray(Keys.Main.RESULTS);
-                Log.e("Length", "" + SimMovArray.length());
                 for (int i = 0; i < SimMovArray.length(); i++) {
                     String SimMovId = null, SimMovTitle = null, SimMovPoster = null, SimMovBackdrop = null;
                     JSONObject temp = SimMovArray.getJSONObject(i);

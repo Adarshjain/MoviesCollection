@@ -18,11 +18,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.geeky.adarsh.moviescollection.Adapter.CastAdapter;
+import com.geeky.adarsh.moviescollection.Adapter.CrewAdapter;
 import com.geeky.adarsh.moviescollection.Interfaces.Keys;
 import com.geeky.adarsh.moviescollection.R;
 import com.geeky.adarsh.moviescollection.Volley.VolleySingleton;
-import com.geeky.adarsh.moviescollection.pojo.Cast;
+import com.geeky.adarsh.moviescollection.pojo.Crew;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,10 +32,10 @@ import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link CastFullFragment#newInstance} factory method to
+ * Use the {@link CrewFullFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CastFullFragment extends Fragment {
+public class CrewFullFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -45,8 +45,8 @@ public class CastFullFragment extends Fragment {
     private VolleySingleton mVolleySingleton = VolleySingleton.getInstance();
     private ImageLoader mImageLoader = mVolleySingleton.getImageLoader();
     private RequestQueue mRequestQueue = mVolleySingleton.getRequestQueue();
-    private ArrayList<Cast> myCast = new ArrayList<>();
-    private CastAdapter mCastAdapter;
+    private ArrayList<Crew> myCrew = new ArrayList<>();
+    private CrewAdapter mCrewAdapter;
     private int color;
 
     // TODO: Rename and change types of parameters
@@ -54,7 +54,7 @@ public class CastFullFragment extends Fragment {
     private String mParam2;
 
 
-    public CastFullFragment() {
+    public CrewFullFragment() {
         // Required empty public constructor
     }
 
@@ -64,11 +64,11 @@ public class CastFullFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment CastFullFragment.
+     * @return A new instance of fragment CrewFullFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static CastFullFragment newInstance(String param1, String param2) {
-        CastFullFragment fragment = new CastFullFragment();
+    public static CrewFullFragment newInstance(String param1, String param2) {
+        CrewFullFragment fragment = new CrewFullFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -91,15 +91,15 @@ public class CastFullFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_cast_full, container, false);
+        View view = inflater.inflate(R.layout.fragment_crew_full, container, false);
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.appBarPadding);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        toolbar.setTitle("Cast - " + title);
+        toolbar.setTitle("Crew - " + title);
         toolbar.setBackgroundColor(color);
-        RecyclerView castRecyclerView = (RecyclerView) view.findViewById(R.id.cast_full_recycler);
-        castRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
-        mCastAdapter = new CastAdapter(getActivity());
-        castRecyclerView.setAdapter(mCastAdapter);
+        RecyclerView crewRecyclerView = (RecyclerView) view.findViewById(R.id.crew_full_recycler);
+        crewRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+        mCrewAdapter = new CrewAdapter(getActivity());
+        crewRecyclerView.setAdapter(mCrewAdapter);
 
         fetchData();
         return view;
@@ -110,45 +110,45 @@ public class CastFullFragment extends Fragment {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        myCast = parseJson(response);
-                        mCastAdapter.setCastList(myCast);
+                        myCrew = parseJson(response);
+                        mCrewAdapter.setCrewList(myCrew);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), "Error Fetching Cast Details!!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Error Fetching Crew Details!!", Toast.LENGTH_SHORT).show();
             }
         });
         mRequestQueue.add(jsonObjectRequest);
     }
 
-    private ArrayList<Cast> parseJson(JSONObject response) {
+    private ArrayList<Crew> parseJson(JSONObject response) {
         try {
-            if (response.has(Keys.Main.CAST) && !response.isNull(Keys.Main.CAST)) {
-                JSONArray CastTemp, CrewTemp;
+            if (response.has(Keys.Main.CREW) && !response.isNull(Keys.Main.CREW)) {
+                JSONArray CrewTemp;
 //                        CreditsTemp = response.getJSONObject(Main.CREDITS);
-                CastTemp = response.getJSONArray(Keys.Main.CAST);
-                for (int i = 0; i < CastTemp.length(); i++) {
-                    String CastId = null, CastName = null, CastCharacter = null, CastProfile = null;
-                    JSONObject temp = CastTemp.getJSONObject(i);
+                CrewTemp = response.getJSONArray(Keys.Main.CREW);
+                for (int i = 0; i < CrewTemp.length(); i++) {
+                    String CrewId = null, CrewName = null, CrewCharacter = null, CrewProfile = null;
+                    JSONObject temp = CrewTemp.getJSONObject(i);
                     if (temp.has(Keys.Main.ID))
-                        CastId = temp.getString(Keys.Main.ID);
+                        CrewId = temp.getString(Keys.Main.ID);
                     if (temp.has(Keys.Main.NAME))
-                        CastName = temp.getString(Keys.Main.NAME);
-                    if (temp.has(Keys.Main.CHARACTER))
-                        CastCharacter = temp.getString(Keys.Main.CHARACTER);
+                        CrewName = temp.getString(Keys.Main.NAME);
+                    if (temp.has(Keys.Main.JOB))
+                        CrewCharacter = temp.getString(Keys.Main.JOB);
                     if (temp.has(Keys.Main.PROFILE_PATH) && !temp.isNull(Keys.Main.PROFILE_PATH))
-                        CastProfile = temp.getString(Keys.Main.PROFILE_PATH);
+                        CrewProfile = temp.getString(Keys.Main.PROFILE_PATH);
 
 
-                    Cast tempCast = new Cast(CastCharacter, CastId, CastName, CastProfile);
-                    myCast.add(tempCast);
+                    Crew tempCrew = new Crew(CrewCharacter, CrewId, CrewName, CrewProfile);
+                    myCrew.add(tempCrew);
                 }
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return myCast;
+        return myCrew;
     }
 
 }

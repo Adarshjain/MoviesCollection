@@ -1,32 +1,67 @@
 package com.geeky.adarsh.moviescollection.pojo;
 
 
-public class Crew {
-    private String Name = null;
-    private Long Id = -1L;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Crew implements Parcelable {
     private String Job = null;
+    private String Id = null;
+    private String Name = null;
     private String ProfilePath = null;
 
-    public Crew(String dept, Long id, String job, String profilePath) {
-        this.Name = dept;
-        this.Id = id;
+    public Crew(String job, String id, String name, String profilePath) {
         this.Job = job;
+        this.Id = id;
+        this.Name = name;
         this.ProfilePath = profilePath;
     }
 
-    public String getDept() {
-        return Name;
+    private Crew(Parcel in) {
+        Job = in.readString();
+        Id = in.readString();
+        Name = in.readString();
+        ProfilePath = in.readString();
     }
 
-    public Long getId() {
-        return Id;
-    }
+    public static final Creator<Crew> CREATOR = new Creator<Crew>() {
+        @Override
+        public Crew createFromParcel(Parcel in) {
+            return new Crew(in);
+        }
+
+        @Override
+        public Crew[] newArray(int size) {
+            return new Crew[size];
+        }
+    };
 
     public String getJob() {
         return Job;
     }
 
+    public String getId() {
+        return Id;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
     public String getProfilePath() {
         return ProfilePath;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(Job);
+        parcel.writeString(Id);
+        parcel.writeString(Name);
+        parcel.writeString(ProfilePath);
     }
 }

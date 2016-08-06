@@ -31,6 +31,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.NetworkImageView;
+import com.geeky.adarsh.moviescollection.Fragments.CastFullFragment;
+import com.geeky.adarsh.moviescollection.Fragments.CrewFullFragment;
 import com.geeky.adarsh.moviescollection.Fragments.DisplayMovieFragment;
 import com.geeky.adarsh.moviescollection.Fragments.MainFragment;
 import com.geeky.adarsh.moviescollection.Fragments.SimilarMoviesFullFragment;
@@ -206,6 +208,28 @@ public class DisplayMovie extends AppCompatActivity {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction ft = manager.beginTransaction();
         Fragment mainFragment = SimilarMoviesFullFragment.newInstance("", "");
+        mainFragment.setArguments(b);
+        ft.replace(R.id.dummy_main_2, mainFragment,"Tag" + tagger);
+        ft.addToBackStack("Tag" + tagger);
+        ft.commit();
+    }
+
+    public void changeCast(Bundle b, int tagger){
+        b.putInt("tagger",tagger+1);
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction ft = manager.beginTransaction();
+        Fragment mainFragment = CastFullFragment.newInstance("", "");
+        mainFragment.setArguments(b);
+        ft.replace(R.id.dummy_main_2, mainFragment,"Tag" + tagger);
+        ft.addToBackStack("Tag" + tagger);
+        ft.commit();
+    }
+
+    public void changeCrew(Bundle b, int tagger){
+        b.putInt("tagger",tagger+1);
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction ft = manager.beginTransaction();
+        Fragment mainFragment = CrewFullFragment.newInstance("", "");
         mainFragment.setArguments(b);
         ft.replace(R.id.dummy_main_2, mainFragment,"Tag" + tagger);
         ft.addToBackStack("Tag" + tagger);
