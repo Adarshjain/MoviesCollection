@@ -1,0 +1,17 @@
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.geeky.adarsh.moviescollection.Fragments.CastBioFragment">
+
+
+    <TextView
+        android:id="@+id/bio"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:text="​Timothy Francis Tim Robbins (born October 16, 1958) is an American actor, screenwriter, director, producer, activist and musician. He is the former longtime partner of actress Susan Sarandon. He is known for his roles as Nuke in Bull Durham, Andy Dufresne in The Shawshank Redemption, and as Dave Boyle in Mystic River, for which he won an Academy Award for Best Supporting Actor.\n\nDescription above from the Wikipedia article Tim Robbins, licensed under CC-BY-SA, full list of contributors on Wikipedia."/>
+</android.support.v4.widget.NestedScrollView>

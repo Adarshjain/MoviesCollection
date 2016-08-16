@@ -38,23 +38,7 @@ public class ImageviewFull extends AppCompatActivity {
 
         viewPager.setAdapter(adapter);
 
-        // displaying selected image first
         viewPager.setCurrentItem(position);
-//        NetworkImageView NetView = (NetworkImageView) findViewById(R.id.net_imageview);
-        FrameLayout frame = (FrameLayout) findViewById(R.id.framehide);
-        frame.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                if (true) {
-                    Toast.makeText(getApplicationContext(),"Tapped! hide",Toast.LENGTH_SHORT).show();
-//                    getSupportActionBar().hide();
-//                    bool[0] = !bool[0];
-//                }else{
-                    Toast.makeText(getApplicationContext(),"Tapped! show",Toast.LENGTH_SHORT).show();
-//                    getSupportActionBar().show();
-//                    bool[0] = !bool[0];
-//                }
-            }
-        });
+
     }
 }

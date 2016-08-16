@@ -1,7 +1,9 @@
 package com.geeky.adarsh.moviescollection.Adapter;
 
 
+import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
+import com.geeky.adarsh.moviescollection.DisplayMovie;
 import com.geeky.adarsh.moviescollection.R;
 import com.geeky.adarsh.moviescollection.Volley.VolleySingleton;
 import com.geeky.adarsh.moviescollection.pojo.Cast;
@@ -48,13 +51,22 @@ public class CastAdapter extends RecyclerView.Adapter<CastAdapter.CastViewHolder
         String CastName = temp.getName();
         String CastCharacter = temp.getCharacter();
         String Poster = temp.getProfilePath();
-        String CastId = temp.getId();
+        final String CastId = temp.getId();
 
         holder.CastName.setText(CastName);
         holder.CastCharacter.setText(CastCharacter);
-        if (Poster != null)
-            holder.Poster.setImageUrl("http://image.tmdb.org/t/p/w150" + Poster, mImageLoader);
 
+        holder.Poster.setImageUrl("http://image.tmdb.org/t/p/w150" + Poster, mImageLoader);
+        holder.Poster.setErrorImageResId(R.drawable.placeholderperson);
+
+        holder.OnClick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle b = new Bundle();
+                b.putString("id", CastId);
+                ((DisplayMovie) context).changeCastNCrew(b, 0);
+            }
+        });
     }
 
     @Override

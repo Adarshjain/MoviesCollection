@@ -39,6 +39,7 @@ import com.geeky.adarsh.moviescollection.Fragments.MainFragment;
 import com.geeky.adarsh.moviescollection.Fragments.SimilarMoviesFullFragment;
 import com.geeky.adarsh.moviescollection.Interfaces.Keys.Main;
 import com.geeky.adarsh.moviescollection.Volley.VolleySingleton;
+import com.geeky.adarsh.moviescollection.pojo.SimilarMovies;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -208,7 +209,7 @@ public class DisplayMovie extends AppCompatActivity {
         b.putInt("tagger",tagger+1);
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction ft = manager.beginTransaction();
-        Fragment mainFragment = CastInfoFragment.newInstance("", "");
+        Fragment mainFragment = SimilarMoviesFullFragment.newInstance("", "");
         mainFragment.setArguments(b);
         ft.replace(R.id.dummy_main_2, mainFragment,"Tag" + tagger);
         ft.addToBackStack("Tag" + tagger);
@@ -231,6 +232,17 @@ public class DisplayMovie extends AppCompatActivity {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction ft = manager.beginTransaction();
         Fragment mainFragment = CrewFullFragment.newInstance("", "");
+        mainFragment.setArguments(b);
+        ft.replace(R.id.dummy_main_2, mainFragment,"Tag" + tagger);
+        ft.addToBackStack("Tag" + tagger);
+        ft.commit();
+    }
+
+    public void changeCastNCrew(Bundle b, int tagger) {
+        b.putInt("tagger",tagger+1);
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction ft = manager.beginTransaction();
+        Fragment mainFragment = CastInfoFragment.newInstance("", "");
         mainFragment.setArguments(b);
         ft.replace(R.id.dummy_main_2, mainFragment,"Tag" + tagger);
         ft.addToBackStack("Tag" + tagger);
@@ -916,6 +928,8 @@ public class DisplayMovie extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }
 //
 //    private void setAppBarOffset(int offsetPx) {

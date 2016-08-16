@@ -50,24 +50,22 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class DisplayMovieFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-    private int Tagger;
-    private String id, movieTitle, PosterUrl, BackdropPath;
+
     private VolleySingleton mVolleySingleton = VolleySingleton.getInstance();
     private ImageLoader mImageLoaderX = mVolleySingleton.getImageLoader();
     private ImageLoader mImageLoader = mVolleySingleton.getImageLoader();
     private RequestQueue mRequestQueue = mVolleySingleton.getRequestQueue();
+
+    private int Tagger;
+    private String id, movieTitle, PosterUrl, BackdropPath;
     private TextView MetascoreV, ImdbRatingV, ImdbVoteCountV, TmdbRatingV, TmdbVoteCountV,
             TomatoConsensusV, RottenCriticV, CriticRatingV, RottenUserMeterV, RottenUserRatingV,
             RatedV, TaglineV, OverviewV, ReleaseDateV, RuntimeV, StatusV, BudgetV, RevenueV, GenreV,
-            AdultV, HomepageV, CollectionNameV, AwardsV, TCTV;
+            AdultV, CollectionNameV, AwardsV, TCTV;
     private TextView CastNameV[] = new TextView[3],
             CastCharacterV[] = new TextView[3],
             CrewNameV[] = new TextView[3],
@@ -75,8 +73,11 @@ public class DisplayMovieFragment extends Fragment {
             ProdCompNameV[] = new TextView[3],
             SimMovNameV[] = new TextView[3];
     //            SimMovYearV[] = new TextView[3];
-    private LinearLayout HorizontalImageViewV, BTC, LinearMain, HompV, CastV, CrewV, SimilarV, SimilarOnClickV[] = new LinearLayout[3];
-    private RelativeLayout GoToCollectionV, IMDBV, MetaV, RTCV, RTUV, TMDBV;
+    private LinearLayout HorizontalImageViewV, BTC, LinearMain, HompV, CastV, CrewV, SimilarV,
+            SimilarOnClickV[] = new LinearLayout[3],
+            CastOnClickV[] = new LinearLayout[3],
+            CrewOnClickV[] = new LinearLayout[3];
+    private RelativeLayout GoToCollectionV;
     private NetworkImageView CollectionPosterV, CastPosterV[] = new NetworkImageView[3], BackdropV, posterImage,
             CrewPosterV[] = new NetworkImageView[3],
             ProdCompPosterV[] = new NetworkImageView[3],
@@ -87,8 +88,6 @@ public class DisplayMovieFragment extends Fragment {
     private ArrayList<String> ImagePaths = new ArrayList<>();
     private ArrayList<String> PosterPaths = new ArrayList<>();
     final int[] color = {0xff000000};
-//            CastCard[] = new CardView[3],
-//            CrewCard[] = new CardView[3];
 //    @SuppressLint("SimpleDateFormat")
 //    private DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 //    @SuppressLint("SimpleDateFormat")
@@ -107,7 +106,6 @@ public class DisplayMovieFragment extends Fragment {
      * @param param2 Parameter 2.
      * @return A new instance of fragment DisplayMovieFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static DisplayMovieFragment newInstance(String param1, String param2) {
         DisplayMovieFragment fragment = new DisplayMovieFragment();
         Bundle args = new Bundle();
@@ -121,8 +119,8 @@ public class DisplayMovieFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            String mParam1 = getArguments().getString(ARG_PARAM1);
+            String mParam2 = getArguments().getString(ARG_PARAM2);
             movieTitle = getArguments().getString("movieTitle");
             PosterUrl = getArguments().getString("posterPath");
             BackdropPath = getArguments().getString("backdropPath");
@@ -232,7 +230,7 @@ public class DisplayMovieFragment extends Fragment {
         RevenueV = (TextView) view.findViewById(R.id.revenue);
         GenreV = (TextView) view.findViewById(R.id.genre);
         AdultV = (TextView) view.findViewById(R.id.adult);
-        HomepageV = (TextView) view.findViewById(R.id.homepage);
+//        HomepageV = (TextView) view.findViewById(R.id.homepage);
         CollectionNameV = (TextView) view.findViewById(R.id.collectionName);
         CastNameV[0] = (TextView) view.findViewById(R.id.Cast1Name);
         CastNameV[1] = (TextView) view.findViewById(R.id.Cast2Name);
@@ -266,11 +264,12 @@ public class DisplayMovieFragment extends Fragment {
         SimilarOnClickV[0] = (LinearLayout) view.findViewById(R.id.simMovOnClick1);
         SimilarOnClickV[1] = (LinearLayout) view.findViewById(R.id.simMovOnClick2);
         SimilarOnClickV[2] = (LinearLayout) view.findViewById(R.id.simMovOnClick3);
-        IMDBV = (RelativeLayout) view.findViewById(R.id.imdb);
-        MetaV = (RelativeLayout) view.findViewById(R.id.meta);
-        RTCV = (RelativeLayout) view.findViewById(R.id.RTC);
-        RTUV = (RelativeLayout) view.findViewById(R.id.RTU);
-        TMDBV = (RelativeLayout) view.findViewById(R.id.tmdb);
+        CastOnClickV[0] = (LinearLayout) view.findViewById(R.id.cast_on_click_1);
+        CastOnClickV[1] = (LinearLayout) view.findViewById(R.id.cast_on_click_2);
+        CastOnClickV[2] = (LinearLayout) view.findViewById(R.id.cast_on_click_3);
+        CrewOnClickV[0] = (LinearLayout) view.findViewById(R.id.crew_on_click_1);
+        CrewOnClickV[1] = (LinearLayout) view.findViewById(R.id.crew_on_click_2);
+        CrewOnClickV[2] = (LinearLayout) view.findViewById(R.id.crew_on_click_3);
 //        GoToCollectionV = (RelativeLayout) view.findViewById(R.id.goToCollection);
         CastPosterV[0] = (NetworkImageView) view.findViewById(R.id.cast1Poster);
         CastPosterV[1] = (NetworkImageView) view.findViewById(R.id.cast2Poster);
@@ -433,7 +432,7 @@ public class DisplayMovieFragment extends Fragment {
             if (!Rating.equals("N/A")) {
                 String RatX = String.format("%.1f", Float.parseFloat(Rating)) + "/10";
                 TmdbRatingV.setText(RatX);
-                TMDBV.setVisibility(View.VISIBLE);
+//                TMDBV.setVisibility(View.VISIBLE);
                 if (response.has(Keys.Main.RATING_COUNT) && !response.isNull(Keys.Main.RATING_COUNT)) {
                     RatingCount = response.getString(Keys.Main.RATING_COUNT);
                     TmdbVoteCountV.setText(RatingCount);
@@ -693,8 +692,8 @@ public class DisplayMovieFragment extends Fragment {
                             @Override
                             public void onClick(View view) {
                                 Bundle b = new Bundle();
-                                b.putString("fetchDataUrl",fetchDataUrl);
-                                b.putInt("color",color[0]);
+                                b.putString("fetchDataUrl", fetchDataUrl);
+                                b.putInt("color", color[0]);
                                 Activity activity = getActivity();
                                 if (activity != null && isAdded())
                                     ((DisplayMovie) activity).changeSimMov(b, Tagger);
@@ -726,7 +725,6 @@ public class DisplayMovieFragment extends Fragment {
                 params.setMarginStart(dpToPx(8));
                 try {
                     if (response.has(Keys.Main.BACKDROPS) && !response.isNull(Keys.Main.BACKDROPS)) {
-//                        JSONObject ImagesObj = response.getJSONObject(Main.IMAGES);
                         JSONArray ImagesArray = response.getJSONArray(Keys.Main.BACKDROPS);
                         String ImagePath = null;
                         for (int i = 0; i < ImagesArray.length(); i++) {
@@ -851,6 +849,20 @@ public class DisplayMovieFragment extends Fragment {
                             if (CastProfile != null)
                                 CastPosterV[i].setImageUrl("http://image.tmdb.org/t/p/w150" + CastProfile, mImageLoader);
 
+                            final String finalCastId = CastId;
+                            CastOnClickV[i].setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+
+                                    Bundle b = new Bundle();
+                                    b.putString("id", finalCastId);
+
+                                    Activity activity = getActivity();
+                                    if (activity != null && isAdded())
+                                        ((DisplayMovie) activity).changeCastNCrew(b, Tagger);
+                                }
+                            });
+
                         }
                         if (response.has(Keys.Main.CREW) && !response.isNull(Keys.Main.CREW)) {
                             CrewTemp = response.getJSONArray(Keys.Main.CREW);
@@ -871,15 +883,30 @@ public class DisplayMovieFragment extends Fragment {
                                 CrewNameV[i].setTag(CrewName);
                                 if (CrewProfile != null)
                                     CrewPosterV[i].setImageUrl("http://image.tmdb.org/t/p/w150" + CrewProfile, mImageLoader);
+                                final String finalCastId = CrewId;
+                                CrewOnClickV[i].setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+
+                                        Bundle b = new Bundle();
+                                        b.putString("id", finalCastId);
+
+                                        Activity activity = getActivity();
+                                        if (activity != null && isAdded())
+                                            ((DisplayMovie) activity).changeCastNCrew(b, Tagger);
+                                    }
+                                });
                             }
                         }
+
+
                         CastFullV.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 Bundle b = new Bundle();
-                                b.putString("fetchDataUrl",fetchDataUrl);
-                                b.putInt("color",color[0]);
-                                b.putString("movieTitle",movieTitle);
+                                b.putString("fetchDataUrl", fetchDataUrl);
+                                b.putInt("color", color[0]);
+                                b.putString("movieTitle", movieTitle);
                                 Activity activity = getActivity();
                                 if (activity != null && isAdded())
                                     ((DisplayMovie) activity).changeCast(b, Tagger);
@@ -889,9 +916,9 @@ public class DisplayMovieFragment extends Fragment {
                             @Override
                             public void onClick(View view) {
                                 Bundle b = new Bundle();
-                                b.putString("movieTitle",movieTitle);
-                                b.putString("fetchDataUrl",fetchDataUrl);
-                                b.putInt("color",color[0]);
+                                b.putString("movieTitle", movieTitle);
+                                b.putString("fetchDataUrl", fetchDataUrl);
+                                b.putInt("color", color[0]);
                                 Activity activity = getActivity();
                                 if (activity != null && isAdded())
                                     ((DisplayMovie) activity).changeCrew(b, Tagger);

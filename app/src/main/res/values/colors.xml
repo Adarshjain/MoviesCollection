@@ -5,6 +5,7 @@
     <color name="colorPrimaryDark">#000</color>
     <!--<color name="colorAccent">#FFEB3B</color>-->
     <color name="colorAccent">#FFF</color>
+    <color name="body_color">#16191E</color>
     <color name="white">#FFF</color>
     <color name="blueCallBack">#BDBDBD</color>
     <color name="text_primary_dark">#de000000</color> <!-- 87% -->

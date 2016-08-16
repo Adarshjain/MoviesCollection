@@ -33,12 +33,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".DisplayMovie" />
         </activity>
-        <activity
-            android:name=".DisplayMovieSimilar"
-            android:launchMode="singleTask" />
-        <activity
-            android:name=".DisplayMovieSimilar2"
-            android:launchMode="singleTask" />
     </application>
 
 </manifest>

@@ -65,4 +65,28 @@ public interface Keys {
         String TOMATO_USER_RATING = "tomatoUserRating";
         String TOMATO_URL = "tomatoURL";
     }
+
+    interface CastNCrew{
+        String BIOGRAPHY = "biography";
+        String BIRTHDAY = "birthday";
+        String NAME = "name";
+        String PROFILE_PATH = "profile_path";
+        String COMBINED_CREDITS = "combined_credits";
+        String MOVIE_CREDITS = "movie_credits";
+        String TV_CREDITS = "tv";
+        String CAST = "cast";
+        String CHARACTER = "character";
+        String MOVIE_ID = "id";
+        String POSTER_PATH = "poster_path";
+        String TITLE = "title";
+        String EXTERNAL_IDS = "external_ids";
+        String IMDB_ID_EXT = "imdb_id";
+        String FB_ID_EXT = "facebook_id";
+        String TWITTER_ID_EXT = "twitter_id";
+        String IMAGES = "images";
+        String PROFILES = "profiles";
+        String IMAGE_PATH = "file_path";
+        String JOB = "job";
+
+    }
 }
